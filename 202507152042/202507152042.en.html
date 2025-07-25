@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aifenxiang</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366F1',
+            secondary: '#EC4899',
+            accent: '#8B5CF6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .bg-gradient-dynamic {
+        background: linear-gradient(45deg, #6366F1, #EC4899, #8B5CF6, #10B981);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+      .nav-blur {
+        backdrop-filter: blur(8px);
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .flip-in {
+        animation: flipIn 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+      }
+      .flip-out {
+        animation: flipOut 0.6s cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
+      }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes flipIn {
+      0% { transform: perspective(800px) rotateY(90deg); opacity: 0; }
+      40% { transform: perspective(800px) rotateY(-20deg); }
+      100% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+    }
+
+    @keyframes flipOut {
+      0% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+      40% { transform: perspective(800px) rotateY(20deg); }
+      100% { transform: perspective(800px) rotateY(90deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-dynamic text-gray-100 font-sans">
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-blur bg-white/10">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex items-center space-x-7">
+        <a href="https://xfchd090909.github.io/aifenxiang/index.en.html" class="text-white/70 hover:text-white transition-colors">
+          <i class="fa fa-home fa-lg"></i>
+        </a>
+        
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-white/20 overflow-hidden border border-white/30">
+            <img src="https://raw.githubusercontent.com/xfchd090909/aifenxiang/main/avatar/mmexport1749912260190.jpg" alt="Author's avatar" class="w-full h-full object-cover">
+          </div>
+          <span class="text-lg font-semibold text-shadow">Æ</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<main class="min-h-screen flex flex-col items-center justify-center pt-20 pb-16">
+  <div class="max-w-7xl w-full px-4 sm:px-6 lg:px-8">
+    <div class="article-container bg-transparent rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
+      <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden rounded-2xl shadow-lg">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+        <img src="20250715211530.jpg" alt="X Platform" class="w-full h-full object-cover">
+        <div class="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-10">
+          <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white text-shadow tracking-tight mb-2">
+            MiSide Multi-Skin Version
+          </h2>
+          <p class="text-gray-200 text-lg md:text-xl">App Sharing</p>
+        </div>
+      </div>
+      
+      <div class="article-content max-w-4xl mx-auto px-6 py-12 md:px-12 md:py-16 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg mt-6">
+        <div class="prose prose-lg max-w-none">
+          <p class="lead text-xl text-gray-700 mb-8">
+            The MiSide multi-skin version uses Miside Custom Models Loader to modify Mita's skin.
+          </p>
+          
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Usage</h3>
+          <p class="text-gray-800 mb-6">
+            Start the game by directly launching MiSideFull.exe. After starting, you will see the CMD command line executing code. Don't worry about it; the game will start soon.<br>
+            Note: Please do not try to close the CMD command line window, or your game will also close. You can play the game in full-screen mode to avoid seeing this annoying window.
+          </p>
+          
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250715212520.jpg" alt="Click MiSideFull.exe" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250715213910.en.jpg" alt="Don't close this CMD command line window" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          
+          <p class="text-gray-800 mb-6">
+            After entering the game, press F1 to view the Mod menu. You can change Crazy Mita's skin under the "Crazy Mita" option. Of course, you can also open the Mod menu and change her skin in real-time while the game is running.<br>
+            I've already installed several skins for you to start experiencing the game right away.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250115215005.jpg" alt="Mod Menu" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250715215130.jpg" alt="Modify Mita's skin" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          
+          <p class="text-gray-800 mb-6">
+            If you want more Mita skins, please go to the Nexusmods website, search for "MiSide", find the MiSide game category, and you will see more skins and components<br><br>
+            Nexusmods:
+          <a href="https://www.nexusmods.com/games/miside/mods" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors ml-2">
+            <i class="fa fa-link mr-1"></i> visiting official website
+          </a>
+          </p>
+          
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Installation Method</h3>
+          <p class="text-gray-800 mb-6">
+            After downloading the skins, your files may look like this.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250715221355.jpg" alt="After download" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            Open the MiSide file directory, and then click on BepInEx\plugins\models in sequence.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250715221439.jpg" alt="File path" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            Extract the previously downloaded skin files to the current directory. Do not put the files into any of the folders in this directory.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250715222728.jpg" alt="Extract the files to this directory" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            Then you can start the game to view the skins.
+          </p>
+          
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Download Links</h3>
+          <p class="text-gray-800 mb-6">
+            Google Drive:
+          <a href="https://drive.google.com/file/d/1-a3hHYlDWd9hCBW1Anhl_UVXhZb1rIsd/view?pli=1" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors ml-2">
+            <i class="fa fa-link mr-1"></i> Open
+          </a>
+          </p>
+          
+          <div class="mt-12 pt-8 border-t border-gray-200">
+            <div class="flex flex-wrap items-center gap-4">
+              <span class="text-sm font-medium text-gray-500">Release Date: July 15, 2025</span>
+              <span class="text-sm font-medium text-gray-500">Released in Guangdong</span>
+              <span class="text-sm font-medium text-gray-500">The website mainly operates in China, and some English words may be translated incorrectly</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex justify-center mt-8">
+        <button id="shareBtn" class="bg-primary text-white py-2 px-4 rounded-md hover:bg-accent transition-colors">
+          <i class="fa fa-share-alt"></i> Share
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+
+  <footer class="py-8 px-4 bg-black/20 text-center">
+    <div class="container mx-auto">
+      <p class="text-lg mb-2">2025 aifenxiang</p>
+      <p class="text-sm text-white/60 mb-4">All materials are from the Internet. If there is any infringement, please contact me to delete them.</p>
+      <button id="emailBtn" class="text-white/80 hover:text-white transition-colors">
+        <i class="fa fa-envelope-o text-xl"></i>
+      </button>
+
+      <div class="mt-4">
+        <a href="202507152042.en.html" class="text-white/80 hover:text-white transition-colors mx-2">English</a>
+        <span class="text-white/80">|</span>
+        <a href="202507152042.html" class="text-white/80 hover:text-white transition-colors mx-2">中文</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="emailModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="modalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="modalContent">
+      <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Contact Email</h3>
+      <div class="space-y-3 text-gray-700">
+        <div class="flex items-center">
+          <i class="fa fa-envelope-o text-primary mr-3"></i>
+          <span>163 Email: teada2024@163.com</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-envelope-o text-accent mr-3"></i>
+          <span>Gmail: xfchd090909@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="shareModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="shareModalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="shareModalContent">
+      <button id="closeShareModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Share To</h3>
+      <div class="space-y-3 text-gray-700">
+        <div class="flex items-center">
+          <i class="fa fa-telegram text-accent mr-3"></i>
+          <a href="https://t.me/share/url?url=https://xfchd090909.github.io/aifenxiang/202507152042/202507152042.en.html&text=MiSide Multi-Skin Version" target="_blank" class="hover:text-accent">Telegram</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-commenting text-secondary mr-3"></i>
+          <a href="https://line.me/R/msg/text/?MiSide Multi-Skin Version https://xfchd090909.github.io/aifenxiang/202507152042/202507152042.en.html" target="_blank" class="hover:text-secondary">LINE</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-facebook text-primary mr-3"></i>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://xfchd090909.github.io/aifenxiang/202507152042/202507152042.en.html" target="_blank" class="hover:text-primary">Facebook</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-whatsapp text-accent mr-3"></i>
+          <a href="whatsapp://send?text=MiSide Multi-Skin Version https://xfchd090909.github.io/aifenxiang/202507152042/202507152042.en.html" target="_blank" class="hover:text-accent">Whatsapp</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-link text-secondary mr-3"></i>
+          <button id="copyLinkBtn" class="hover:text-secondary">Share Link</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="copySuccessModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="copySuccessModalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="copySuccessModalContent">
+      <button id="closeCopySuccessModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Copy Success</h3>
+      <p class="text-gray-700">The link has been copied to the clipboard.</p>
+    </div>
+  </div>
+
+  <script>
+
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('bg-white/20', 'shadow-md');
+        header.classList.remove('bg-white/10');
+      } else {
+        header.classList.remove('bg-white/20', 'shadow-md');
+        header.classList.add('bg-white/10');
+      }
+    });
+
+
+    const emailBtn = document.getElementById('emailBtn');
+    const emailModal = document.getElementById('emailModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModal = document.getElementById('closeModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    function openModal() {
+      emailModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modalContent.classList.add('flip-in');
+        modalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalFunc() {
+      modalContent.classList.add('flip-out');
+      setTimeout(() => {
+        emailModal.classList.add('opacity-0', 'pointer-events-none');
+        modalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    emailBtn.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalFunc);
+    modalOverlay.addEventListener('click', closeModalFunc);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !emailModal.classList.contains('opacity-0')) {
+        closeModalFunc();
+      }
+    });
+
+    const shareBtn = document.getElementById('shareBtn');
+    const shareModal = document.getElementById('shareModal');
+    const shareModalContent = document.getElementById('shareModalContent');
+    const closeShareModal = document.getElementById('closeShareModal');
+    const shareModalOverlay = document.getElementById('shareModalOverlay');
+
+    function openShareModal() {
+      shareModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        shareModalContent.classList.add('flip-in');
+        shareModalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeShareModalFunc() {
+      shareModalContent.classList.add('flip-out');
+      setTimeout(() => {
+        shareModal.classList.add('opacity-0', 'pointer-events-none');
+        shareModalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    shareBtn.addEventListener('click', openShareModal);
+    closeShareModal.addEventListener('click', closeShareModalFunc);
+    shareModalOverlay.addEventListener('click', closeShareModalFunc);
+
+    const copyLinkBtn = document.getElementById('copyLinkBtn');
+    const copySuccessModal = document.getElementById('copySuccessModal');
+    const copySuccessModalContent = document.getElementById('copySuccessModalContent');
+    const closeCopySuccessModal = document.getElementById('closeCopySuccessModal');
+    const copySuccessModalOverlay = document.getElementById('copySuccessModalOverlay');
+
+    function openCopySuccessModal() {
+      copySuccessModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        copySuccessModalContent.classList.add('flip-in');
+        copySuccessModalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCopySuccessModalFunc() {
+      copySuccessModalContent.classList.add('flip-out');
+      setTimeout(() => {
+        copySuccessModal.classList.add('opacity-0', 'pointer-events-none');
+        copySuccessModalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    copyLinkBtn.addEventListener('click', () => {
+      const link = 'https://xfchd090909.github.io/aifenxiang/202507152042/202507152042.en.html';
+      navigator.clipboard.writeText(link).then(() => {
+        openCopySuccessModal();
+      }).catch((err) => {
+        console.error('Failed to copy the link: ', err);
+      });
+    });
+
+    closeCopySuccessModal.addEventListener('click', closeCopySuccessModalFunc);
+    copySuccessModalOverlay.addEventListener('click', closeCopySuccessModalFunc);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !shareModal.classList.contains('opacity-0')) {
+        closeShareModalFunc();
+      }
+      if (e.key === 'Escape' && !copySuccessModal.classList.contains('opacity-0')) {
+        closeCopySuccessModalFunc();
+      }
+    });
+  </script>
+</body>
+</html>
