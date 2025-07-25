@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aifenxiang</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366F1',
+            secondary: '#EC4899',
+            accent: '#8B5CF6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .bg-gradient-dynamic {
+        background: linear-gradient(45deg, #6366F1, #EC4899, #8B5CF6, #10B981);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+      .nav-blur {
+        backdrop-filter: blur(8px);
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .flip-in {
+        animation: flipIn 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+      }
+      .flip-out {
+        animation: flipOut 0.6s cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
+      }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes flipIn {
+      0% { transform: perspective(800px) rotateY(90deg); opacity: 0; }
+      40% { transform: perspective(800px) rotateY(-20deg); }
+      100% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+    }
+
+    @keyframes flipOut {
+      0% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+      40% { transform: perspective(800px) rotateY(20deg); }
+      100% { transform: perspective(800px) rotateY(90deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-dynamic text-gray-100 font-sans">
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-blur bg-white/10">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex items-center space-x-7">
+        <a href="https://xfchd090909.github.io/aifenxiang/index.en.html" class="text-white/70 hover:text-white transition-colors">
+          <i class="fa fa-home fa-lg"></i>
+        </a>
+        
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-white/20 overflow-hidden border border-white/30">
+            <img src="https://raw.githubusercontent.com/xfchd090909/aifenxiang/main/avatar/mmexport1749912260190.jpg" alt="Author Avatar" class="w-full h-full object-cover">
+          </div>
+          <span class="text-lg font-semibold text-shadow">Æ</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<main class="min-h-screen flex flex-col items-center justify-center pt-20 pb-16">
+  <div class="max-w-7xl w-full px-4 sm:px-6 lg:px-8">
+    <div class="article-container bg-transparent rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
+      <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden rounded-2xl shadow-lg">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+        <img src="20250722190050.jpg" alt="Civilization 6" class="w-full h-full object-cover">
+        <div class="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-10">
+          <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white text-shadow tracking-tight mb-2">
+            Civilization 6 Complete DLC Version
+          </h2>
+          <p class="text-gray-200 text-lg md:text-xl">App Sharing</p>
+        </div>
+      </div>
+      
+        <div class="article-content max-w-4xl mx-auto px-6 py-12 md:px-12 md:py-16 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg mt-6">
+        <div class="prose prose-lg max-w-none">
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Introduction</h3>
+          <p class="text-gray-800 mb-6">
+            Civilization 6 Complete DLC offers more gameplay modes with the 60-turn limit removed.<br>
+            This article provides download links for all platforms (including Android, iOS, and Windows).
+          </p>
+
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Download and Installation Methods</h3>
+          <h4 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Download</h4>
+          <p class="text-gray-800 mb-6">
+            Main download link (123 Cloud Drive):
+           <a href="https://www.123912.com/s/tB00Td-93I7d" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors ml-2">
+            <i class="fa fa-link mr-1"></i> Open
+           </a>
+           <br>
+           <br>
+            Secondary download link (123 Cloud Drive):
+          <a href="https://www.123865.com/s/tB00Td-93I7d" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors ml-2">
+          <i class="fa fa-link mr-1"></i> Open
+          </a>
+          <br>
+          <br>
+            Select and download the version suitable for your system.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722192133.jpg" alt="Download" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <h4 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Notes</h4>
+          <p class="text-gray-800 mb-6">
+            For Civilization 6 (iOS):<br>
+            "恢复存档.imazingapp" is for non-jailbroken/TrollStore users and requires a Mac or Windows computer.<br>
+            "文明6全DLC越狱巨魔.zip" is for jailbroken/TrollStore users and can be restored using Filza file manager.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250723141654.jpg" alt="Notes" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <h4 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Installation</h4>
+          <h4 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Android</h4>
+          <p class="text-gray-800 mb-6">
+            Download from the cloud drive and install directly.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722194706.jpg" alt="Android" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <h4 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">iOS (Non-jailbroken)</h4>
+          <p class="text-gray-800 mb-6">
+            Note: You must turn off "Find My Device" for this method.<br>
+            How to turn off: Settings - Privacy & Security - Location Services - Share My Location - Find My Device, enter your Apple ID password to disable it.<br>
+            <br>
+            App Store:
+          <a href="https://apps.apple.com/gb/app/sid-meiers-civilization-vi/id1235863443" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors ml-2">
+           <i class="fa fa-download mr-1"></i> Go to App Store
+          </a>
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722194211.jpg" alt="Apple" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            1. Open your computer and download iMazing.<br><br>
+            iMazing:
+          <a href="https://imazing.com" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors ml-2">
+           <i class="fa fa-link mr-1"></i> iMazing Official Site
+          </a>
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722195111.jpg" alt="iMazing Official Site" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <div class="mt-12 pt-8 border-t border-gray-200">
+          <p class="text-gray-800 mb-6">
+            2. Open iMazing, connect your device with a data cable, and click "Applications" on the left.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722195433.jpg" alt="iMazing Recovery" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            3. Select Civilization 6 and click "Restore Application". If "Restore Application" is unavailable, click "Manage Applications" below.<br>
+            The first time you enter "Manage Applications", you need to enter your Apple ID and password. If two-factor authentication is enabled, you also need to enter the corresponding verification code.
+          </p>
+         <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722200000.jpg" alt="Manage Applications" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            4. Click the device tab, select Civilization 6, right-click and select "Restore Application Data".
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722200433.jpg" alt="Manage Applications" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+           <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722200444.jpg" alt="Manage Applications" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            5. Select the "Recovery Archive.imazingapp" file downloaded from the cloud drive and click "Done".
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722200845.jpg" alt="Manage Applications" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            6. iMazing will prompt to restore your application and restart. Click "Continue".
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722200907.jpg" alt="Restore Application" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            7. iMazing will start restoring your application.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722201000.jpg" alt="Start Recovery" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            8. After recovery is complete, it will prompt that your device recovery is finished. If your device shows the Setup Assistant, select "Don't transfer apps and data", otherwise your restored application will be lost.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722200931.jpg" alt="Recovery Complete" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            9. After entering your password at startup, if the Recovery Assistant appears, click "Customize Settings" - "Apps & Data (Don't transfer apps & data)", then follow the prompts to complete the process.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722202644.jpg" alt="Recovery Assistant" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <h4 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">iOS (Jailbroken)</h4>
+          <p class="text-gray-800 mb-6">
+            Note: This method does not require turning off Find My Device.<br><br>
+            App Store:
+          <a href="https://apps.apple.com/gb/app/sid-meiers-civilization-vi/id1235863443" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors ml-2">
+           <i class="fa fa-download mr-1"></i> Go to App Store
+          </a>
+          <br>
+          <br>
+            Or download "Civilization6.ipa" from the cloud drive and install using TrollStore.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250722203332.jpg" alt="Installation Package" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            1. Download "Civilization 6 Complete DLC Jailbreak Troll.zip" from the cloud drive and unzip it.<br>2. After unzipping, there will be two folders "Documents" and "Library". Share these two folders to Filza, then copy them to the clipboard.<br>3. Open App Manager, find Civilization 6, enter its directory, click paste from Filza clipboard, select "Apply to All", click replace, and you can open the game after completion.
+          </p>
+          <h4 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Windows</h4>
+          <p class="text-gray-800 mb-6">  
+            Download link:
+          <a href="https://apps.apple.com/gb/app/sid-meiers-civilization-vi/id1235863443" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors ml-2">
+           <i class="fa fa-link mr-1"></i> Open
+          </a>
+          <br>
+          <br>
+            Unzip the compressed package, open the directory Base\Binaries\Win64Steam, and click "CivilizationVI_DX12.exe" or "CivilizationVI.exe" to launch the game.<br>
+            If opening "CivilizationVI_DX12.exe" reports an error "No available graphics device found. Please ensure your system has the correct and compatible graphics device installed", use "CivilizationVI.exe" instead.
+          </p>
+          <h4 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Problem Analysis</h4>
+          <p class="text-gray-800 mb-6">
+            If opening "CivilizationVI_DX12.exe" reports an error "No available graphics device found. Please ensure your system has the correct and compatible graphics device installed", it may be that your graphics card driver is not up to date, you have installed an incompatible graphics card driver, or you are using a computing power graphics card similar to P106-100, which prevents the game from calling the graphics card driver. If it's the former, you can download "Driver Talent" or "Driver Genius" to update your graphics card driver. If it's the latter and you are using a computing power graphics card, you may consider replacing it with a new graphics card or a new computer.
+          </p>
+            <div class="flex flex-wrap items-center gap-4">
+              <span class="text-sm font-medium text-gray-500">Release Date: July 22, 2025</span>
+              <span class="text-sm font-medium text-gray-500">Released in Guangdong</span>
+              <span class="text-sm font-medium text-gray-500">The website mainly operates in China, and some English words may be translated incorrectly</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex justify-center mt-8">
+        <button id="shareBtn" class="bg-primary text-white py-2 px-4 rounded-md hover:bg-accent transition-colors">
+          <i class="fa fa-share-alt"></i> Share
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+
+  <footer class="py-8 px-4 bg-black/20 text-center">
+    <div class="container mx-auto">
+      <p class="text-lg mb-2">2025 aifenxiang</p>
+      <p class="text-sm text-white/60 mb-4">All materials are from the Internet. Contact me to remove if there is any infringement.</p>
+      <button id="emailBtn" class="text-white/80 hover:text-white transition-colors">
+        <i class="fa fa-envelope-o text-xl"></i>
+      </button>
+
+      <div class="mt-4">
+        <a href="202507221636.en.html" class="text-white/80 hover:text-white transition-colors mx-2">English</a>
+        <span class="text-white/80">|</span>
+        <a href="202507221636.html" class="text-white/80 hover:text-white transition-colors mx-2">中文</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="emailModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="modalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="modalContent">
+      <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Contact Email</h3>
+      <div class="space-y-3 text-gray-700">
+        <div class="flex items-center">
+          <i class="fa fa-envelope-o text-primary mr-3"></i>
+          <span>163 Email: teada2024@163.com</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-envelope-o text-accent mr-3"></i>
+          <span>Gmail: xfchd090909@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="shareModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="shareModalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="shareModalContent">
+      <button id="closeShareModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Share to</h3>
+      <div class="space-y-3 text-gray-700">
+        <div class="flex items-center">
+          <i class="fa fa-telegram text-accent mr-3"></i>
+          <a href="https://t.me/share/url?url=https://xfchd090909.github.io/aifenxiang/202507221636/202507221636.html&text=Civilization 6 Complete DLC Version" target="_blank" class="hover:text-accent">Telegram</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-commenting text-secondary mr-3"></i>
+          <a href="https://line.me/R/msg/text/?Civilization 6 Complete DLC Version https://xfchd090909.github.io/aifenxiang/202507221636/202507221636.html" target="_blank" class="hover:text-secondary">LINE</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-facebook text-primary mr-3"></i>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://xfchd090909.github.io/aifenxiang/202507221636/202507221636.html" target="_blank" class="hover:text-primary">Facebook</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-whatsapp text-accent mr-3"></i>
+          <a href="whatsapp://send?text=Civilization 6 Complete DLC Version https://xfchd090909.github.io/aifenxiang/202507221636/202507221636.html" target="_blank" class="hover:text-accent">Whatsapp</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-link text-secondary mr-3"></i>
+          <button id="copyLinkBtn" class="hover:text-secondary">Share Link</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="copySuccessModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="copySuccessModalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="copySuccessModalContent">
+      <button id="closeCopySuccessModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Copy Successful</h3>
+      <p class="text-gray-700">Link has been copied to clipboard</p>
+    </div>
+  </div>
+
+  <script>
+
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('bg-white/20', 'shadow-md');
+        header.classList.remove('bg-white/10');
+      } else {
+        header.classList.remove('bg-white/20', 'shadow-md');
+        header.classList.add('bg-white/10');
+      }
+    });
+
+
+    const emailBtn = document.getElementById('emailBtn');
+    const emailModal = document.getElementById('emailModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModal = document.getElementById('closeModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    function openModal() {
+      emailModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modalContent.classList.add('flip-in');
+        modalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalFunc() {
+      modalContent.classList.add('flip-out');
+      setTimeout(() => {
+        emailModal.classList.add('opacity-0', 'pointer-events-none');
+        modalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    emailBtn.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalFunc);
+    modalOverlay.addEventListener('click', closeModalFunc);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !emailModal.classList.contains('opacity-0')) {
+        closeModalFunc();
+      }
+    });
+
+    const shareBtn = document.getElementById('shareBtn');
+    const shareModal = document.getElementById('shareModal');
+    const shareModalContent = document.getElementById('shareModalContent');
+    const closeShareModal = document.getElementById('closeShareModal');
+    const shareModalOverlay = document.getElementById('shareModalOverlay');
+
+    function openShareModal() {
+      shareModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        shareModalContent.classList.add('flip-in');
+        shareModalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeShareModalFunc() {
+      shareModalContent.classList.add('flip-out');
+      setTimeout(() => {
+        shareModal.classList.add('opacity-0', 'pointer-events-none');
+        shareModalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    shareBtn.addEventListener('click', openShareModal);
+    closeShareModal.addEventListener('click', closeShareModalFunc);
+    shareModalOverlay.addEventListener('click', closeShareModalFunc);
+
+    const copyLinkBtn = document.getElementById('copyLinkBtn');
+    const copySuccessModal = document.getElementById('copySuccessModal');
+    const copySuccessModalContent = document.getElementById('copySuccessModalContent');
+    const closeCopySuccessModal = document.getElementById('closeCopySuccessModal');
+    const copySuccessModalOverlay = document.getElementById('copySuccessModalOverlay');
+
+    function openCopySuccessModal() {
+      copySuccessModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        copySuccessModalContent.classList.add('flip-in');
+        copySuccessModalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCopySuccessModalFunc() {
+      copySuccessModalContent.classList.add('flip-out');
+      setTimeout(() => {
+        copySuccessModal.classList.add('opacity-0', 'pointer-events-none');
+        copySuccessModalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    copyLinkBtn.addEventListener('click', () => {
+      const link = 'https://xfchd090909.github.io/aifenxiang/202507221636/202507221636.html';
+      navigator.clipboard.writeText(link).then(() => {
+        openCopySuccessModal();
+      }).catch((err) => {
+        console.error('Failed to copy link: ', err);
+      });
+    });
+
+    closeCopySuccessModal.addEventListener('click', closeCopySuccessModalFunc);
+    copySuccessModalOverlay.addEventListener('click', closeCopySuccessModalFunc);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !shareModal.classList.contains('opacity-0')) {
+        closeShareModalFunc();
+      }
+      if (e.key === 'Escape' && !copySuccessModal.classList.contains('opacity-0')) {
+        closeCopySuccessModalFunc();
+      }
+    });
+  </script>
+</body>
+</html>
