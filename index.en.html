@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aifenxiang</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366F1',
+            secondary: '#EC4899',
+            accent: '#8B5CF6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .bg-gradient-dynamic {
+        background: linear-gradient(45deg, #6366F1, #EC4899, #8B5CF6, #10B981);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+      .nav-blur {
+        backdrop-filter: blur(8px);
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .flip-in {
+        animation: flipIn 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+      }
+      .flip-out {
+        animation: flipOut 0.6s cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes flipIn {
+      0% { transform: perspective(800px) rotateY(90deg); opacity: 0; }
+      40% { transform: perspective(800px) rotateY(-20deg); }
+      100% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+    }
+
+    @keyframes flipOut {
+      0% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+      40% { transform: perspective(800px) rotateY(20deg); }
+      100% { transform: perspective(800px) rotateY(90deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-dynamic text-gray-100 font-sans">
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-blur bg-white/10">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <a href="https://xfchd090909.github.io/aifenxiang/index.en.html" class="text-white/70 hover:text-white transition-colors mr-4">
+        <i class="fa fa-home fa-lg"></i>
+      </a>
+
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-white/20 overflow-hidden border border-white/30">
+          <img src="https://raw.githubusercontent.com/xfchd090909/aifenxiang/main/avatar/mmexport1749912260190.jpg" alt="Author's avatar" class="w-full h-full object-cover">
+        </div>
+        <span class="text-lg font-semibold text-shadow">Æ</span>
+      </div>
+    </div>
+    
+    <div class="relative w-64 md:w-80">
+      <input type="text" id="searchInput" placeholder="Search for articles, tags..." class="w-full py-2 px-4 pr-10 rounded-full bg-white/20 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm transition-all">
+      <button id="searchBtn" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-colors">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+  <main class="min-h-screen flex flex-col items-center justify-center pt-20 pb-16" id="mainContent">
+    <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold mb-6 text-center text-shadow tracking-tight">
+      aifenxiang
+    </h1>
+    
+    <a href="202507111224/202507111224.en.html" class="w-full max-w-3xl mx-4 my-5 card-hover cursor-pointer article-item">
+      <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/20 shadow-lg">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">Musk's GrokAI Makes Japanese Netizens Break Down Collectively!</h2>
+        <p class="text-white/90 mb-6 leading-relaxed">
+          The incident of Japanese netizens arguing with Grok refers to the event where Grok, the AI assistant on Musk's X platform, caused anger and protests among Japanese netizens due to inappropriate remarks. The specific situation is as follows...
+        </p>
+        <div class="flex justify-between items-center">
+          <span class="text-white/70 text-sm">Click to view detailed information</span>
+          <span class="text-white/70 text-sm">Published on: July 11, 2025</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="202507152042/202507152042.en.html" class="w-full max-w-3xl mx-4 my-5 card-hover cursor-pointer article-item">
+      <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/20 shadow-lg">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">MiSide Multi-Skin Version</h2>
+        <p class="text-white/90 mb-6 leading-relaxed">
+          Application sharing
+        </p>
+        <div class="flex justify-between items-center">
+          <span class="text-white/70 text-sm">Click to view detailed information</span>
+          <span class="text-white/70 text-sm">Published on: July 15, 2025</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="202507221636/202507221636.en.html" class="w-full max-w-3xl mx-4 my-5 card-hover cursor-pointer article-item">
+      <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/20 shadow-lg">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">Civ VI ALL DLC Version</h2>
+        <p class="text-white/90 mb-6 leading-relaxed">
+          Application sharing
+        </p>
+        <div class="flex justify-between items-center">
+          <span class="text-white/70 text-sm">Click to view detailed information</span>
+          <span class="text-white/70 text-sm">Published on: Tue 22, 2025</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="202507251406/202507251406.en.html" class="w-full max-w-3xl mx-4 my-5 card-hover cursor-pointer article-item">
+      <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/20 shadow-lg">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">Pikabuu:STOP</h2>
+        <p class="text-white/90 mb-6 leading-relaxed">
+          Application sharing
+        </p>
+        <div class="flex justify-between items-center">
+          <span class="text-white/70 text-sm">Click to view detailed information</span>
+          <span class="text-white/70 text-sm">Published on: Fri 25, 2025</span>
+        </div>
+      </div>
+    </a>
+       <p class="text-sm text-white/60 mb-4">The website mainly operates in China, and some English words may be translated incorrectly</p>
+  </main>
+
+  <footer class="py-8 px-4 bg-black/20 text-center">
+    <div class="container mx-auto">
+      <p class="text-lg mb-2">2025 aifenxiang</p>
+      <p class="text-sm text-white/60 mb-4">All materials are from the Internet. Please contact me to delete if there is any infringement.</p>
+      <button id="emailBtn" class="text-white/80 hover:text-white transition-colors">
+        <i class="fa fa-envelope-o text-xl"></i>
+      </button>
+
+      <div class="mt-4">
+        <a href="index.en.html" class="text-white/80 hover:text-white transition-colors mx-2">English</a>
+        <span class="text-white/80">|</span>
+        <a href="index.html" class="text-white/80 hover:text-white transition-colors mx-2">中文</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="emailModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="modalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="modalContent">
+      <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Contact Email</h3>
+      <div class="space-y-3 text-gray-700">
+        <div class="flex items-center">
+          <i class="fa fa-envelope-o text-primary mr-3"></i>
+          <span>163 Email: teada2024@163.com</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-envelope-o text-accent mr-3"></i>
+          <span>Gmail: xfchd090909@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('bg-white/20', 'shadow-md');
+        header.classList.remove('bg-white/10');
+      } else {
+        header.classList.remove('bg-white/20', 'shadow-md');
+        header.classList.add('bg-white/10');
+      }
+    });
+
+
+    const emailBtn = document.getElementById('emailBtn');
+    const emailModal = document.getElementById('emailModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModal = document.getElementById('closeModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    function openModal() {
+      emailModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modalContent.classList.add('flip-in');
+        modalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalFunc() {
+      modalContent.classList.add('flip-out');
+      setTimeout(() => {
+        emailModal.classList.add('opacity-0', 'pointer-events-none');
+        modalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    emailBtn.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalFunc);
+    modalOverlay.addEventListener('click', closeModalFunc);
+
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !emailModal.classList.contains('opacity-0')) {
+        closeModalFunc();
+      }
+    });
+
+
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const mainContent = document.getElementById('mainContent');
+    const originalContent = mainContent.innerHTML;
+    let articlesData = []; 
+    
+ 
+    document.addEventListener('DOMContentLoaded', function() {
+      const articleItems = document.querySelectorAll('.article-item');
+      articleItems.forEach(item => {
+        articlesData.push(item.outerHTML);
+      });
+    });
+
+
+    let searchTimeout;
+    
+
+    function performSearch() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const keyword = searchInput.value.trim().toLowerCase();
+        
+        if (keyword === '') {
+
+          mainContent.innerHTML = originalContent;
+          return;
+        }
+        
+
+        mainContent.innerHTML = `
+          <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold mb-6 text-center text-shadow tracking-tight">
+            aifenxiang
+          </h1>
+          <p class="text-xl text-white/80 mb-8 text-center max-w-2xl">
+            Search Results
+          </p>
+        `;
+        
+        let hasResults = false;
+        
+
+        articlesData.forEach(articleHTML => {
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = articleHTML;
+          const article = tempDiv.querySelector('.article-item');
+          
+          const title = article.querySelector('h2').textContent.toLowerCase();
+          const content = article.querySelector('p').textContent.toLowerCase();
+          
+          if (title.includes(keyword) || content.includes(keyword)) {
+            mainContent.appendChild(article);
+            hasResults = true;
+          }
+        });
+        
+        if (!hasResults) {
+          mainContent.innerHTML += `
+            <div class="w-full max-w-3xl mx-4 bg-white/10 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/20 shadow-lg text-center">
+              <i class="fa fa-search fa-4x mb-4 text-white/60"></i>
+              <h3 class="text-xl font-semibold mb-2">No matching results found</h3>
+              <p class="text-white/70">Please try using different keywords or check your spelling</p>
+            </div>
+          `;
+        }
+      }, 300); 
+    }
+
+
+    searchInput.addEventListener('input', performSearch);
+
+
+    searchBtn.addEventListener('click', performSearch);
+
+
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+  </script>
+</body>
+</html>
