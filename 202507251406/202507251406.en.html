@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aifenxiang</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366F1',
+            secondary: '#EC4899',
+            accent: '#8B5CF6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .bg-gradient-dynamic {
+        background: linear-gradient(45deg, #6366F1, #EC4899, #8B5CF6, #10B981);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+      .nav-blur {
+        backdrop-filter: blur(8px);
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .flip-in {
+        animation: flipIn 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+      }
+      .flip-out {
+        animation: flipOut 0.6s cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
+      }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes flipIn {
+      0% { transform: perspective(800px) rotateY(90deg); opacity: 0; }
+      40% { transform: perspective(800px) rotateY(-20deg); }
+      100% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+    }
+
+    @keyframes flipOut {
+      0% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+      40% { transform: perspective(800px) rotateY(20deg); }
+      100% { transform: perspective(800px) rotateY(90deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-dynamic text-gray-100 font-sans">
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-blur bg-white/10">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex items-center space-x-7">
+        <a href="https://aeafx.dpdns.org" class="text-white/70 hover:text-white transition-colors">
+          <i class="fa fa-home fa-lg"></i>
+        </a>
+        
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-white/20 overflow-hidden border border-white/30">
+            <img src="https://raw.githubusercontent.com/xfchd090909/aifenxiang/main/avatar/mmexport1749912260190.jpg" alt="Author's avatar" class="w-full h-full object-cover">
+          </div>
+          <span class="text-lg font-semibold text-shadow">Æ</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<main class="min-h-screen flex flex-col items-center justify-center pt-20 pb-16">
+  <div class="max-w-7xl w-full px-4 sm:px-6 lg:px-8">
+    <div class="article-container bg-transparent rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
+      <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden rounded-2xl shadow-lg">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+        <img src="20250725151339.png" alt="Pikabuu: Stop!" class="w-full h-full object-cover">
+        <div class="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-10">
+          <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white text-shadow tracking-tight mb-2">
+            Pikabuu: Stop!
+          </h2>
+          <p class="text-gray-200 text-lg md:text-xl">App Sharing</p>
+        </div>
+      </div>
+      
+        <div class="article-content max-w-4xl mx-auto px-6 py-12 md:px-12 md:py-16 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg mt-6">
+        <div class="prose prose-lg max-w-none">
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Introduction</h3>
+          <p class="text-gray-800 mb-6">
+            The game revolves around the protagonist Beni, a father struggling to support his family. However, he falls into the predicament of gambling and illegal loans, putting the entire family on the verge of breaking apart. Players will experience the sufferings of Beni and his family through the game, and deeply feel the devastating impact of gambling on families.
+          </p>
+
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Story-Driven Gameplay</h3>
+          <p class="text-gray-800 mb-6">
+            The game adopts a story-centered gameplay. Every decision made by the player in the game will affect the development of the plot and the fate of the characters. This gameplay allows players to truly immerse themselves in Beni's story, feel the various dilemmas and choices he faces, and enhances the sense of immersion and emotional resonance of the game.
+          </p>
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Multiple Endings Design</h3>
+          <p class="text-gray-800 mb-6">
+            The game features six different endings, depending on the player's choices during the game. Different endings show various possible consequences of gambling problems. In some endings, Beni ultimately cannot withstand the pressure and chooses to commit suicide; in others, he takes extreme measures to repay debts, such as selling his organs. These endings profoundly reflect the serious harm of gambling to individuals and families, allowing players to have a deeper thinking about gambling problems after the game ends.
+          </p>
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Emotionally Intense Narrative Style</h3>
+          <p class="text-gray-800 mb-6">
+            The game uses emotionally intense narrative techniques to vividly depict the pain, struggle and despair of Beni and his family when facing the gambling crisis. Through delicate emotional expressions, players can more deeply understand the seriousness of gambling problems and the huge damage they cause to family and personal life.
+          </p>
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Presentation of Sensitive Themes</h3>
+          <p class="text-gray-800 mb-6">
+            It unreservedly presents sensitive themes such as domestic violence, financial collapse, and family trauma. Through intuitive pictures and plot settings, players can understand that gambling problems are not just personal economic losses, but also trigger a series of serious social and family problems, further emphasizing the educational significance of the game.
+          </p>
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Game Significance</h3>
+          <h4 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Educational and Warning Role</h4>
+          <p class="text-gray-800 mb-6">
+            Through vivid game plots and multiple endings design, it intuitively shows players the dangers of gambling, playing a good educational and warning role. While entertaining, players can deeply realize the possible serious consequences of gambling, thus staying away from gambling.
+          </p>
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Language</h3>
+          <p class="text-gray-800 mb-6">
+            Click Language - Mandarin (Simplified)
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725161613.jpg" alt="Language" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725161623.jpg" alt="Language" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725161629.jpg" alt="Language" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          </p>
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Gameplay</h3>
+          <p class="text-gray-800 mb-6">
+            1. After clicking New Game, there will be a prompt about sensitive content in the game and a skill test. For the sensitive content prompt, you must choose according to your physical and mental conditions. For the skill test, you need to keep clicking the Tap button until the progress bar is full, then click Continue to start the game.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725162608.jpg" alt="Sensitive content" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725162547.jpg" alt="Skill test" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725162559.jpg" alt="Start game" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            2. After entering the game, the protagonist sits on a chair. The protagonist can pick up the cigarette or TV remote control on the table. After picking up the TV remote control, aim it at the TV to change channels. During this period, the protagonist cannot move until the wife comes to interact with you, and then the story unfolds.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725162621.jpg" alt="In game" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            3. If you feel the sensitivity is too fast, click the pause button in the upper right corner to adjust the Sensitivity option. Fov Camera is the perspective option; the higher it is, the wider the perspective. After adjustment, click Back to the game below to continue the game. If you want to quit the game, click pause and then click Quit Game in the lower right corner.
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725162637.jpg" alt="Sensitivity settings" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          </p>
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Endings Overview</h3>
+          <p class="text-gray-800 mb-6">
+            Ending 1 Conclusion: All bitter news and stories about gambling ruining lives initially start with "just playing for fun" (Best ending)
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725153827.jpg" alt="Ending 1" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            Ending 2 Conclusion: The second you realize gambling is hurting you is the golden opportunity to save yourself (Good ending)
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725153849.jpg" alt="Ending 2" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            Ending 3 Conclusion: Many people think gambling is the solution, but in reality, it is the end of all solutions (Bad ending)
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725153858.jpg" alt="Ending 3" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            Ending 4 Conclusion: Don't let gambling take everything from you, including your last breath (Bad ending)
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725153906.jpg" alt="Ending 4" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            Ending 5 Conclusion: The first victim of gambling is the family (Bad ending)
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725153913.jpg" alt="Ending 5" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <p class="text-gray-800 mb-6">
+            Ending 6 Conclusion: Gambling endangers not only wealth but also family happiness (Worst ending)
+          </p>
+          <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
+            <img src="20250725153919.jpg" alt="Ending 6" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Notes</h3>
+          <p class="text-gray-800 mb-6">
+            1. The Windows version currently only has a Demo version, which may have reduced content. The full version will be officially released on the Steam platform on July 29, 2025. For full version information, please refer to Steam and major online platforms.<br>
+            2. The Android version is the full version; you can download and experience it if you have an Android device.<br>
+            3. There is no iOS version yet.<br>
+            4. The game contains mild horror and bloody plots as well as gambling content. Players with poor psychological endurance should think carefully before playing!!! (At your own risk if something happens)
+          </p>
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Download Link</h3>
+          <p class="text-gray-800 mb-6">
+            Download link (123 Cloud Disk):
+          <a href="https://www.123912.com/s/tB00Td-YhI7d" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors ml-2">
+           <i class="fa fa-link mr-1"></i> Open
+          </a>
+          </p>
+            <div class="flex flex-wrap items-center gap-4">
+              <span class="text-sm font-medium text-gray-500">Release time: July 25, 2025</span>
+              <span class="text-sm font-medium text-gray-500">Released in Guangdong</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex justify-center mt-8">
+        <button id="shareBtn" class="bg-primary text-white py-2 px-4 rounded-md hover:bg-accent transition-colors">
+          <i class="fa fa-share-alt"></i> Share
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+
+  <footer class="py-8 px-4 bg-black/20 text-center">
+    <div class="container mx-auto">
+      <p class="text-lg mb-2">2025 aifenxiang</p>
+      <p class="text-sm text-white/60 mb-4">All materials are from the Internet. If there is any infringement, please contact me to delete them.</p>
+      <button id="emailBtn" class="text-white/80 hover:text-white transition-colors">
+        <i class="fa fa-envelope-o text-xl"></i>
+      </button>
+
+      <div class="mt-4">
+        <a href="202507251406.en.html" class="text-white/80 hover:text-white transition-colors mx-2">English</a>
+        <span class="text-white/80">|</span>
+        <a href="202507251406.html" class="text-white/80 hover:text-white transition-colors mx-2">中文</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="emailModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="modalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="modalContent">
+      <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Contact Email</h3>
+      <div class="space-y-3 text-gray-700">
+        <div class="flex items-center">
+          <i class="fa fa-envelope-o text-primary mr-3"></i>
+          <span>163 Email: teada2024@163.com</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-envelope-o text-accent mr-3"></i>
+          <span>Gmail: xfchd090909@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="shareModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="shareModalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="shareModalContent">
+      <button id="closeShareModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Share to</h3>
+      <div class="space-y-3 text-gray-700">
+        <div class="flex items-center">
+          <i class="fa fa-telegram text-accent mr-3"></i>
+          <a href="https://t.me/share/url?url=https://aeafx.dpdns.org/202507251406/202507251406.html&text=Pikabuu: Stop!" target="_blank" class="hover:text-accent">Telegram</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-commenting text-secondary mr-3"></i>
+          <a href="https://line.me/R/msg/text/?Pikabuu: Stop! https://aeafx.dpdns.org/202507251406/202507251406.html" target="_blank" class="hover:text-secondary">LINE</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-facebook text-primary mr-3"></i>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://aeafx.dpdns.org/202507251406/202507251406.html" target="_blank" class="hover:text-primary">Facebook</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-whatsapp text-accent mr-3"></i>
+          <a href="whatsapp://send?text=Pikabuu: Stop! https://aeafx.dpdns.org/202507251406/202507251406.html" target="_blank" class="hover:text-accent">Whatsapp</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-link text-secondary mr-3"></i>
+          <button id="copyLinkBtn" class="hover:text-secondary">Share Link</button>
+        </div>
+      </div>
+      <p class="text-sm text-gray-500 mt-4">Due to strict domestic software review mechanisms, the website does not currently provide sharing methods for some software such as WeChat and QQ. You can use the share link to share this article.</p>
+    </div>
+  </div>
+
+  <div id="copySuccessModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="copySuccessModalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="copySuccessModalContent">
+      <button id="closeCopySuccessModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Copy Successful</h3>
+      <p class="text-gray-700">The link has been copied to the clipboard</p>
+    </div>
+  </div>
+
+  <script>
+
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('bg-white/20', 'shadow-md');
+        header.classList.remove('bg-white/10');
+      } else {
+        header.classList.remove('bg-white/20', 'shadow-md');
+        header.classList.add('bg-white/10');
+      }
+    });
+
+
+    const emailBtn = document.getElementById('emailBtn');
+    const emailModal = document.getElementById('emailModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModal = document.getElementById('closeModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    function openModal() {
+      emailModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modalContent.classList.add('flip-in');
+        modalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalFunc() {
+      modalContent.classList.add('flip-out');
+      setTimeout(() => {
+        emailModal.classList.add('opacity-0', 'pointer-events-none');
+        modalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    emailBtn.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalFunc);
+    modalOverlay.addEventListener('click', closeModalFunc);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !emailModal.classList.contains('opacity-0')) {
+        closeModalFunc();
+      }
+    });
+
+    const shareBtn = document.getElementById('shareBtn');
+    const shareModal = document.getElementById('shareModal');
+    const shareModalContent = document.getElementById('shareModalContent');
+    const closeShareModal = document.getElementById('closeShareModal');
+    const shareModalOverlay = document.getElementById('shareModalOverlay');
+
+    function openShareModal() {
+      shareModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        shareModalContent.classList.add('flip-in');
+        shareModalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeShareModalFunc() {
+      shareModalContent.classList.add('flip-out');
+      setTimeout(() => {
+        shareModal.classList.add('opacity-0', 'pointer-events-none');
+        shareModalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    shareBtn.addEventListener('click', openShareModal);
+    closeShareModal.addEventListener('click', closeShareModalFunc);
+    shareModalOverlay.addEventListener('click', closeShareModalFunc);
+
+    const copyLinkBtn = document.getElementById('copyLinkBtn');
+    const copySuccessModal = document.getElementById('copySuccessModal');
+    const copySuccessModalContent = document.getElementById('copySuccessModalContent');
+    const closeCopySuccessModal = document.getElementById('closeCopySuccessModal');
+    const copySuccessModalOverlay = document.getElementById('copySuccessModalOverlay');
+
+    function openCopySuccessModal() {
+      copySuccessModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        copySuccessModalContent.classList.add('flip-in');
+        copySuccessModalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCopySuccessModalFunc() {
+      copySuccessModalContent.classList.add('flip-out');
+      setTimeout(() => {
+        copySuccessModal.classList.add('opacity-0', 'pointer-events-none');
+        copySuccessModalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    copyLinkBtn.addEventListener('click', () => {
+      const link = 'https://aeafx.dpdns.org/202507251406/202507251406.html';
+      navigator.clipboard.writeText(link).then(() => {
+        openCopySuccessModal();
+      }).catch((err) => {
+        console.error('Failed to copy link: ', err);
+      });
+    });
+
+    closeCopySuccessModal.addEventListener('click', closeCopySuccessModalFunc);
+    copySuccessModalOverlay.addEventListener('click', closeCopySuccessModalFunc);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !shareModal.classList.contains('opacity-0')) {
+        closeShareModalFunc();
+      }
+      if (e.key === 'Escape' && !copySuccessModal.classList.contains('opacity-0')) {
+        closeCopySuccessModalFunc();
+      }
+    });
+  </script>
+</body>
+</html>
