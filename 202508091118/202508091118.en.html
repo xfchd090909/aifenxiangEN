@@ -44,10 +44,6 @@
       .flip-out {
         animation: flipOut 0.6s cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
       }
-      .content-blur {
-        filter: blur(8px);
-        pointer-events: none;
-      }
     }
 
     @keyframes gradient {
@@ -71,15 +67,18 @@
 </head>
 <body class="min-h-screen bg-gradient-dynamic text-gray-100 font-sans">
   <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-blur bg-white/10">
-    <div class="container mx-auto px-4 py-3 flex items-center">
-      <div class="flex items-center space-x-3 flex-1">
-        <a href="https://aeafx.netlify.app" class="text-white/70 hover:text-white transition-colors">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex items-center space-x-7">
+        <a href="https://aeafxen.dpdns.org" class="text-white/70 hover:text-white transition-colors">
           <i class="fa fa-home fa-lg"></i>
         </a>
         
-        <a href="https://aeafx.netlify.app/login" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors">
-          <i class="fa fa-user mr-1"></i> Me
-        </a>
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-white/20 overflow-hidden border border-white/30">
+            <img src="https://raw.githubusercontent.com/xfchd090909/aifenxiang/main/avatar/mmexport1749912260190.jpg" alt="Author's avatar" class="w-full h-full object-cover">
+          </div>
+          <span class="text-lg font-semibold text-shadow">Æ</span>
+        </div>
       </div>
     </div>
   </header>
@@ -89,22 +88,18 @@
     <div class="article-container bg-transparent rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
       <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden rounded-2xl shadow-lg">
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
-        <img src="20250809131730.jpg" alt="" class="w-full h-full object-cover">
+        <img src="20250725151339.png" alt="Pikabuu: Stop!" class="w-full h-full object-cover">
         <div class="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-10">
           <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white text-shadow tracking-tight mb-2">
             Random Anime Images
           </h2>
-          <p class="text-gray-200 text-lg md:text-xl">Author's placeholder</p>
+          <p class="text-gray-200 text-lg md:text-xl">Author Promotion</p>
         </div>
       </div>
       
-      <div class="article-content max-w-4xl mx-auto px-6 py-12 md:px-12 md:py-16 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg mt-6" id="sensitiveContent">
-        <div class="prose prose-lg max-w-none" id="articleText">
-          
-          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Introduction</h3>
+        <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Introduction</h3>
           <p class="text-gray-800 mb-6">
-            Click "Random Anime Images" to generate. To use as wallpaper, click "Download Image" after obtaining the picture.<br>
-            Due to API restrictions, there may be R-18 content, so sensitive content warnings are enabled when entering this article.
+            Click "Random Anime Images" to generate. To use as wallpaper, click "Download Image" after obtaining the picture.
           </p>
           
           <div class="relative rounded-xl overflow-hidden mb-8 shadow-lg transform transition-transform duration-300 hover:scale-[1.01]">
@@ -125,8 +120,7 @@
           <blockquote class="border-l-4 border-red-500 pl-4 py-2 text-gray-700 my-6 bg-red-50/50">
             Note: If you're on a mobile device, only mobile-optimized images will be generated (same for PC). For PC images, please use a PC or enable desktop mode in your browser.
           </blockquote>
-          
-          <div class="mt-12 pt-8 border-t border-gray-200">
+		  
             <div class="flex flex-wrap items-center gap-4">
               <span class="text-sm font-medium text-gray-500">Published: August 9, 2025</span>
               <span class="text-sm font-medium text-gray-500">Location: Guangdong</span>
@@ -134,7 +128,7 @@
           </div>
         </div>
       </div>
-
+      
       <div class="flex justify-center mt-8">
         <button id="shareBtn" class="bg-primary text-white py-2 px-4 rounded-md hover:bg-accent transition-colors">
           <i class="fa fa-share-alt"></i> Share
@@ -143,7 +137,6 @@
     </div>
   </div>
 </main>
-
 
   <footer class="py-8 px-4 bg-black/20 text-center">
     <div class="container mx-auto">
@@ -158,29 +151,10 @@
         <span class="text-white/80">|</span>
         <a href="https://aeafx.netlify.app/202508091118/202508091118" class="text-white/80 hover:text-white transition-colors mx-2">Chinese</a>
         <span class="text-white/80">|</span>
-        <a href="https://aeafx.netlify.app/announcement.html" class="text-white/80 hover:text-white transition-colors mx-2">Announcement</a>
+        <a href="https://aeafxen.dpdns.org/announcement.html" class="text-white/80 hover:text-white transition-colors mx-2">Announcement</a>
       </div>
     </div>
   </footer>
-
-  <!-- Sensitive Content Prompt Modal -->
-  <div id="sensitivePromptModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="absolute inset-0 bg-black/50" id="sensitivePromptOverlay"></div>
-    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="sensitivePromptContent">
-      <button id="closeSensitivePromptModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-        <i class="fa fa-times"></i>
-      </button>
-      <h3 class="text-xl font-bold text-gray-800 mb-4">Sensitive Content Warning</h3>
-      <p class="text-gray-700 mb-6" id="sensitivePromptText">
-        This article contains sensitive content. Please log in to view it.
-      </p>
-      <div class="flex justify-end">
-        <button id="handleSensitivePrompt" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-accent transition-colors">
-          Go to Login
-        </button>
-      </div>
-    </div>
-  </div>
 
   <div id="emailModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
     <div class="absolute inset-0 bg-black/50" id="modalOverlay"></div>
@@ -196,7 +170,7 @@
         </div>
         <div class="flex items-center">
           <i class="fa fa-envelope-o text-accent mr-3"></i>
-          <span> Gmail: xfchd090909@gmail.com</span>
+          <span>Gmail: xfchd090909@gmail.com</span>
         </div>
       </div>
     </div>
@@ -208,30 +182,29 @@
       <button id="closeShareModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
         <i class="fa fa-times"></i>
       </button>
-      <h3 class="text-xl font-bold text-gray-800 mb-4">Share to</h3>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Share To</h3>
       <div class="space-y-3 text-gray-700">
         <div class="flex items-center">
           <i class="fa fa-telegram text-accent mr-3"></i>
-          <a href="https://t.me/share/url?url=https://aeafx.netlify.app/202508091118/202508091118&text=Musk's GrokAI Upsets Japanese Netizens Collectively - X Platform's AI Sparks Controversy with Inappropriate Remarks" target="_blank" class="hover:text-accent">Telegram</a>
+          <a href="https://t.me/share/url?url=https://aeafxen.dpdns.org/202508091118/202508091118.en&text=Pikabuu: Stop!" target="_blank" class="hover:text-accent">Telegram</a>
         </div>
         <div class="flex items-center">
           <i class="fa fa-commenting text-secondary mr-3"></i>
-          <a href="https://line.me/R/msg/text/?Musk's GrokAI Upsets Japanese Netizens Collectively - X Platform's AI Sparks Controversy with Inappropriate Remarks https://aeafx.netlify.app/202508091118/202508091118" target="_blank" class="hover:text-secondary">LINE</a>
+          <a href="https://line.me/R/msg/text/?Pikabuu: Stop! https://aeafxen.dpdns.org/202508091118/202508091118.en" target="_blank" class="hover:text-secondary">LINE</a>
         </div>
         <div class="flex items-center">
           <i class="fa fa-facebook text-primary mr-3"></i>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://aeafx.netlify.app/202508091118/202508091118" target="_blank" class="hover:text-primary">Facebook</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://aeafxen.dpdns.org/202508091118/202508091118.en" target="_blank" class="hover:text-primary">Facebook</a>
         </div>
         <div class="flex items-center">
           <i class="fa fa-whatsapp text-accent mr-3"></i>
-          <a href="whatsapp://send?text=Musk's GrokAI Upsets Japanese Netizens Collectively - X Platform's AI Sparks Controversy with Inappropriate Remarks https://aeafx.netlify.app/202508091118/202508091118" target="_blank" class="hover:text-accent">Whatsapp</a>
+          <a href="whatsapp://send?text=Pikabuu: Stop! https://aeafxen.dpdns.org/202508091118/202508091118.en" target="_blank" class="hover:text-accent">Whatsapp</a>
         </div>
         <div class="flex items-center">
           <i class="fa fa-link text-secondary mr-3"></i>
           <button id="copyLinkBtn" class="hover:text-secondary">Copy Link</button>
         </div>
       </div>
-      <p class="text-sm text-gray-500 mt-4">Due to strict review mechanisms of domestic software in China, we currently don't provide sharing methods for WeChat, QQ and some other platforms. You can use the share link to share this article.</p>
     </div>
   </div>
 
@@ -242,87 +215,11 @@
         <i class="fa fa-times"></i>
       </button>
       <h3 class="text-xl font-bold text-gray-800 mb-4">Copied</h3>
-      <p class="text-gray-700">Link has been copied to clipboard.</p>
+      <p class="text-gray-700">Link has been copied to clipboard</p>
     </div>
   </div>
 
   <script>
-    // Check sensitive content permission
-    function checkSensitiveContentPermission() {
-      const githubUser = localStorage.getItem('githubUser');
-      const googleUser = localStorage.getItem('googleUser');
-      const showSensitive = localStorage.getItem('showSensitiveContent') === 'true';
-      const content = document.getElementById('sensitiveContent');
-      const modal = document.getElementById('sensitivePromptModal');
-      const promptText = document.getElementById('sensitivePromptText');
-      const handleBtn = document.getElementById('handleSensitivePrompt');
-      
-      // Check if logged in (GitHub or Google)
-      const isLoggedIn = githubUser || googleUser;
-      
-      // Not logged in
-      if (!isLoggedIn) {
-        content.classList.add('content-blur');
-        promptText.textContent = 'This article contains sensitive content. Please log in to view it.';
-        handleBtn.textContent = 'Go to Login';
-        handleBtn.onclick = () => {
-          window.location.href = 'https://aeafx.netlify.app/login';
-        };
-        openSensitivePromptModal();
-      } 
-      // Logged in but sensitive content not enabled
-      else if (!showSensitive) {
-        content.classList.add('content-blur');
-        promptText.textContent = 'This article contains sensitive content. Please enable "Show Sensitive Content" in settings to view it.';
-        handleBtn.textContent = 'Go to Settings';
-        handleBtn.onclick = () => {
-          window.location.href = 'https://aeafx.netlify.app/login';
-        };
-        openSensitivePromptModal();
-      }
-      // Logged in and sensitive content enabled
-      else {
-        content.classList.remove('content-blur');
-        const articleText = document.getElementById('articleText');
-        articleText.style.userSelect = 'auto';
-      }
-      
-      // Disable text selection (only when content is blurred)
-      if (content.classList.contains('content-blur')) {
-        const articleText = document.getElementById('articleText');
-        articleText.style.userSelect = 'none';
-        articleText.style.webkitUserSelect = 'none';
-        articleText.style.mozUserSelect = 'none';
-        articleText.style.msUserSelect = 'none';
-      }
-    }
-    
-    // Open sensitive content prompt modal
-    function openSensitivePromptModal() {
-      const modal = document.getElementById('sensitivePromptModal');
-      const modalContent = document.getElementById('sensitivePromptContent');
-      
-      modal.classList.remove('opacity-0', 'pointer-events-none');
-      setTimeout(() => {
-        modalContent.classList.add('flip-in');
-        modalContent.classList.remove('opacity-0');
-      }, 100);
-      document.body.style.overflow = 'hidden';
-    }
-    
-    // Close sensitive content prompt modal
-    function closeSensitivePromptModalFunc() {
-      const modal = document.getElementById('sensitivePromptModal');
-      const modalContent = document.getElementById('sensitivePromptContent');
-      
-      modalContent.classList.add('flip-out');
-      setTimeout(() => {
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        modalContent.classList.remove('flip-in', 'flip-out');
-      }, 600);
-      document.body.style.overflow = '';
-    }
-    
     window.addEventListener('scroll', function() {
       const header = document.querySelector('header');
       if (window.scrollY > 50) {
@@ -333,7 +230,6 @@
         header.classList.add('bg-white/10');
       }
     });
-
 
     const emailBtn = document.getElementById('emailBtn');
     const emailModal = document.getElementById('emailModal');
@@ -422,7 +318,7 @@
     }
 
     copyLinkBtn.addEventListener('click', () => {
-      const link = 'https://aeafx.netlify.app/202508091118/202508091118';
+      const link = 'https://aeafxen.dpdns.org/202508091118/202508091118.en';
       navigator.clipboard.writeText(link).then(() => {
         openCopySuccessModal();
       }).catch((err) => {
@@ -433,26 +329,14 @@
     closeCopySuccessModal.addEventListener('click', closeCopySuccessModalFunc);
     copySuccessModalOverlay.addEventListener('click', closeCopySuccessModalFunc);
 
-    // Sensitive content prompt modal event listeners
-    document.getElementById('closeSensitivePromptModal').addEventListener('click', closeSensitivePromptModalFunc);
-    document.getElementById('sensitivePromptOverlay').addEventListener('click', closeSensitivePromptModalFunc);
-    
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (!shareModal.classList.contains('opacity-0')) {
-          closeShareModalFunc();
-        }
-        if (!copySuccessModal.classList.contains('opacity-0')) {
-          closeCopySuccessModalFunc();
-        }
-        if (!document.getElementById('sensitivePromptModal').classList.contains('opacity-0')) {
-          closeSensitivePromptModalFunc();
-        }
+      if (e.key === 'Escape' && !shareModal.classList.contains('opacity-0')) {
+        closeShareModalFunc();
+      }
+      if (e.key === 'Escape' && !copySuccessModal.classList.contains('opacity-0')) {
+        closeCopySuccessModalFunc();
       }
     });
-    
-    // Check sensitive content permission on page load
-    document.addEventListener('DOMContentLoaded', checkSensitiveContentPermission);
   </script>
 </body>
 </html>
