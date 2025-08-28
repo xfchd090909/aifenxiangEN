@@ -97,7 +97,6 @@
         const submitBtn = document.getElementById('submit-btn');
         const statusMessage = document.getElementById('status-message');
         const messageText = document.getElementById('message-text');
-        const VERIFY_STATUS_KEY = 'cfTurnstileVerified';
         
         // 验证成功回调函数
         function onVerifySuccess(token) {
@@ -137,7 +136,8 @@
     
             // 获取跳转参数，优先使用原页面地址
             const urlParams = new URLSearchParams(window.location.search);
-            const redirectUrl = urlParams.get('redirect') || 'index.html';
+            const VERIFY_STATUS_KEY = 'cfTurnstileVerified';
+            const redirectUrl = urlParams.get('redirect') || 'https://aeafxen.dpdns.org';
     
             setTimeout(() => {
               window.location.href = redirectUrl; // 跳转到原页面或主页
