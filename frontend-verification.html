@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>纯前端Turnstile验证</title>
-    <!-- 引入外部资源 -->
+    <title>修复后的人机验证</title>
+    <!-- 生产环境应替换为本地安装的Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- 引入Cloudflare Turnstile脚本 -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
     
-    <!-- Tailwind配置 -->
     <script>
         tailwind.config = {
             theme: {
@@ -40,17 +38,14 @@
             <p class="text-gray-500 text-sm">验证通过后即可继续操作</p>
         </div>
         
-        <!-- 验证容器 -->
         <div class="mb-6">
             <div id="turnstile-container" class="w-full"></div>
         </div>
         
-        <!-- 状态提示区域 -->
         <div id="status" class="mb-6 p-4 rounded-lg hidden">
             <p id="status-text" class="text-center text-sm"></p>
         </div>
         
-        <!-- 操作按钮 -->
         <button id="action-btn" 
                 class="w-full bg-gray-300 text-gray-500 py-3 rounded-lg font-medium cursor-not-allowed transition-base"
                 disabled>
@@ -63,46 +58,49 @@
     </div>
 
     <script>
-        // 全局变量存储验证token
-        let verificationToken = token;
+        let verificationToken = null;
         
-        // DOM元素
         const turnstileContainer = document.getElementById('turnstile-container');
         const statusElement = document.getElementById('status');
         const statusText = document.getElementById('status-text');
         const actionBtn = document.getElementById('action-btn');
         
-        // 页面加载完成后初始化Turnstile
-        window.addEventListener('load', () => {
-            // 渲染Turnstile验证组件
-            turnstile.render(turnstileContainer, {
-                // 这里使用测试密钥，实际使用时替换为你的Site Key
-                sitekey: '0x4AAAAAABuV_6cPPwlj1VPo',
-                theme: 'auto',
-                size: 'normal',
-                // 验证成功回调
-                callback: (token) => {
-                    verificationToken = token;
-                    showStatus('验证成功！您可以继续操作了', 'success');
-                    enableActionButton();
-                },
-                // 验证失败回调
-                errorCallback: (error) => {
-                    showStatus('验证失败，请重试', 'error');
-                    disableActionButton();
-                    console.error('验证错误:', error);
-                },
-                // 验证过期回调
-                expiredCallback: () => {
-                    showStatus('验证已过期，请重新验证', 'error');
-                    disableActionButton();
-                    // 重新加载验证组件
-                    turnstile.reset();
-                }
-            });
+        // 确保DOM加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 检查Turnstile是否加载成功
+            if (typeof turnstile === 'undefined') {
+                showStatus('验证服务加载失败，请刷新页面重试', 'error');
+                return;
+            }
+            
+            try {
+                turnstile.render(turnstileContainer, {
+                    sitekey: '0x4AAAAAABuV_6cPPwlj1VPo',
+                    theme: 'auto',
+                    size: 'normal',
+                    // 修复：正确接收token参数
+                    callback: function(token) {
+                        verificationToken = token;
+                        showStatus('验证成功！您可以继续操作了', 'success');
+                        enableActionButton();
+                    },
+                    errorCallback: function(error) {
+                        showStatus('验证失败，请重试', 'error');
+                        disableActionButton();
+                        console.error('验证错误:', error);
+                    },
+                    expiredCallback: function() {
+                        showStatus('验证已过期，请重新验证', 'error');
+                        disableActionButton();
+                        turnstile.reset();
+                    }
+                });
+            } catch (error) {
+                console.error('初始化验证组件失败:', error);
+                showStatus('验证组件加载失败，请刷新页面', 'error');
+            }
         });
         
-        // 显示状态信息
         function showStatus(text, type) {
             statusText.textContent = text;
             statusElement.classList.remove('hidden', 'bg-green-50', 'text-green-600', 'bg-red-50', 'text-red-600');
@@ -114,31 +112,24 @@
             }
         }
         
-        // 启用操作按钮
         function enableActionButton() {
             actionBtn.disabled = false;
             actionBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
             actionBtn.classList.add('bg-primary', 'text-white', 'cursor-pointer', 'hover:bg-primary/90');
         }
         
-        // 禁用操作按钮
         function disableActionButton() {
             actionBtn.disabled = true;
             actionBtn.classList.remove('bg-primary', 'text-white', 'cursor-pointer', 'hover:bg-primary/90');
             actionBtn.classList.add('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
         }
         
-        // 操作按钮点击事件
         actionBtn.addEventListener('click', () => {
             if (verificationToken) {
-                // 这里可以执行验证通过后的操作
                 showStatus('正在执行操作...', 'success');
                 
-                // 模拟操作执行
                 setTimeout(() => {
                     showStatus('操作已完成！', 'success');
-                    // 可以在这里添加页面跳转或其他逻辑
-                    window.location.href = 'index.html';
                 }, 1500);
             }
         });
