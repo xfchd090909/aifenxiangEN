@@ -94,6 +94,7 @@
 
     <script>
         // 获取DOM元素
+        const VERIFY_STATUS_KEY = 'cfTurnstileVerified';
         const submitBtn = document.getElementById('submit-btn');
         const statusMessage = document.getElementById('status-message');
         const messageText = document.getElementById('message-text');
@@ -136,7 +137,6 @@
     
             // 获取跳转参数，优先使用原页面地址
             const urlParams = new URLSearchParams(window.location.search);
-            const VERIFY_STATUS_KEY = 'cfTurnstileVerified';
             const redirectUrl = urlParams.get('redirect') || 'https://aeafxen.dpdns.org';
     
             setTimeout(() => {
