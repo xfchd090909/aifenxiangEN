@@ -2,7 +2,7 @@
 const VERIFY_PAGE_PATH = 'frontend-verification.html';
 
 // 当前页面的完整 URL（不含哈希值，避免影响跳转）
-const currentPageUrl = window.location.href.split('aeafxen.dpdns.org')[0];
+const currentPageUrl = window.location.href.split('https://aeafxen.dpdns.org')[0];
 
 // 检查是否是验证页面本身（避免循环跳转）
 const isVerifyPage = currentPageUrl.endsWith(VERIFY_PAGE_PATH);
