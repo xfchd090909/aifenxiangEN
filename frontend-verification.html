@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>修复后的人机验证</title>
-    <!-- 生产环境应替换为本地安装的Tailwind CSS -->
+    <title>人机验证示例</title>
+    <!-- 引入Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    <!-- 引入Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     
+    <!-- 配置Tailwind自定义颜色和字体 -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2563eb',
-                        success: '#10b981',
-                        error: '#ef4444',
-                    }
+                        primary: '#165DFF',
+                        secondary: '#36BFFA',
+                        neutral: '#F5F7FA',
+                        dark: '#1D2129',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
                 }
             }
         }
@@ -25,113 +32,113 @@
     
     <style type="text/tailwindcss">
         @layer utilities {
-            .transition-base {
-                transition: all 0.3s ease;
+            .content-auto {
+                content-visibility: auto;
+            }
+            .card-shadow {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            }
+            .btn-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
             }
         }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-6 md:p-8">
-        <div class="text-center mb-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-2">请完成人机验证</h2>
-            <p class="text-gray-500 text-sm">验证通过后即可继续操作</p>
+<body class="font-inter bg-gradient-to-br from-neutral to-white min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <!-- 卡片容器 -->
+        <div class="bg-white rounded-2xl p-8 card-shadow transition-all duration-500 hover:shadow-xl">
+            <!-- 标题区域 -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
+                    <i class="fa fa-shield text-2xl"></i>
+                </div>
+                <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-dark mb-2">验证您的身份</h1>
+                <p class="text-gray-500">请完成以下验证以证明您不是自动程序</p>
+            </div>
+            
+            <!-- 验证区域 -->
+            <div class="mb-6">
+                <!-- Cloudflare Turnstile 验证组件 -->
+                <!-- 注意：这里使用的是演示站点密钥，实际使用时需要替换为您自己的 -->
+                <div class="cf-turnstile" 
+                     data-sitekey="1x00000000000000000000AA" 
+                     data-theme="light"
+                     data-size="normal"
+                     data-callback="onVerifySuccess">
+                </div>
+            </div>
+            
+            <!-- 状态信息区域 -->
+            <div id="status-message" class="mb-6 p-4 rounded-lg hidden">
+                <p id="message-text" class="text-center"></p>
+            </div>
+            
+            <!-- 提交按钮 -->
+            <button id="submit-btn" 
+                    class="w-full bg-primary text-white py-3 px-6 rounded-lg font-medium btn-hover opacity-50 cursor-not-allowed"
+                    disabled>
+                验证并继续
+            </button>
+            
+            <!-- 辅助信息 -->
+            <p class="text-center text-gray-400 text-sm mt-6">
+                安全验证由 Cloudflare 提供支持
+                <a href="https://www.cloudflare.com/zh-cn/products/turnstile/" target="_blank" class="text-primary hover:underline">
+                    了解更多<br>
+                </a>
+                ©2025 | aeafxEN
+            </p>
         </div>
-        
-        <div class="mb-6">
-            <div id="turnstile-container" class="w-full"></div>
-        </div>
-        
-        <div id="status" class="mb-6 p-4 rounded-lg hidden">
-            <p id="status-text" class="text-center text-sm"></p>
-        </div>
-        
-        <button id="action-btn" 
-                class="w-full bg-gray-300 text-gray-500 py-3 rounded-lg font-medium cursor-not-allowed transition-base"
-                disabled>
-            验证通过后点击
-        </button>
-        
-        <p class="text-center text-gray-400 text-xs mt-6">
-            验证服务由 Cloudflare Turnstile 提供
-        </p>
     </div>
 
     <script>
-        let verificationToken = null;
+        // 获取DOM元素
+        const submitBtn = document.getElementById('submit-btn');
+        const statusMessage = document.getElementById('status-message');
+        const messageText = document.getElementById('message-text');
         
-        const turnstileContainer = document.getElementById('turnstile-container');
-        const statusElement = document.getElementById('status');
-        const statusText = document.getElementById('status-text');
-        const actionBtn = document.getElementById('action-btn');
-        
-        // 确保DOM加载完成后初始化
-        document.addEventListener('DOMContentLoaded', () => {
-            // 检查Turnstile是否加载成功
-            if (typeof turnstile === 'undefined') {
-                showStatus('验证服务加载失败，请刷新页面重试', 'error');
-                return;
-            }
+        // 验证成功回调函数
+        function onVerifySuccess(token) {
+            // 显示成功消息
+            showMessage('验证成功！您可以继续操作了。', 'success');
             
-            try {
-                turnstile.render(turnstileContainer, {
-                    sitekey: '0x4AAAAAABuV_6cPPwlj1VPo',
-                    theme: 'auto',
-                    size: 'normal',
-                    // 修复：正确接收token参数
-                    callback: function(token) {
-                        verificationToken = token;
-                        showStatus('验证成功！您可以继续操作了', 'success');
-                        enableActionButton();
-                    },
-                    errorCallback: function(error) {
-                        showStatus('验证失败，请重试', 'error');
-                        disableActionButton();
-                        console.error('验证错误:', error);
-                    },
-                    expiredCallback: function() {
-                        showStatus('验证已过期，请重新验证', 'error');
-                        disableActionButton();
-                        turnstile.reset();
-                    }
-                });
-            } catch (error) {
-                console.error('初始化验证组件失败:', error);
-                showStatus('验证组件加载失败，请刷新页面', 'error');
-            }
-        });
+            // 启用提交按钮
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            submitBtn.classList.add('opacity-100', 'cursor-pointer');
+            
+            // 存储验证token（实际应用中可能需要发送到服务器）
+            console.log('验证成功，Token:', token);
+        }
         
-        function showStatus(text, type) {
-            statusText.textContent = text;
-            statusElement.classList.remove('hidden', 'bg-green-50', 'text-green-600', 'bg-red-50', 'text-red-600');
+        // 显示消息函数
+        function showMessage(text, type) {
+            messageText.textContent = text;
+            statusMessage.classList.remove('hidden', 'bg-green-50', 'text-green-600', 'bg-red-50', 'text-red-600');
             
             if (type === 'success') {
-                statusElement.classList.add('bg-green-50', 'text-green-600');
+                statusMessage.classList.add('bg-green-50', 'text-green-600');
             } else if (type === 'error') {
-                statusElement.classList.add('bg-red-50', 'text-red-600');
+                statusMessage.classList.add('bg-red-50', 'text-red-600');
             }
         }
         
-        function enableActionButton() {
-            actionBtn.disabled = false;
-            actionBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
-            actionBtn.classList.add('bg-primary', 'text-white', 'cursor-pointer', 'hover:bg-primary/90');
-        }
-        
-        function disableActionButton() {
-            actionBtn.disabled = true;
-            actionBtn.classList.remove('bg-primary', 'text-white', 'cursor-pointer', 'hover:bg-primary/90');
-            actionBtn.classList.add('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
-        }
-        
-        actionBtn.addEventListener('click', () => {
-            if (verificationToken) {
-                showStatus('正在执行操作...', 'success');
+        // 提交按钮点击事件
+        submitBtn.addEventListener('click', () => {
+            // 在实际应用中，这里会将验证token发送到服务器进行验证
+            showMessage('正在处理您的请求...', 'success');
+            
+            // 模拟处理延迟
+            setTimeout(() => {
+                showMessage('操作完成！您已成功通过验证。', 'success');
                 
+                // 2秒后可以添加跳转逻辑
                 setTimeout(() => {
-                    showStatus('操作已完成！', 'success');
-                }, 1500);
-            }
+                    alert('验证成功！即将跳转到下一页。');
+                    window.location.href = 'index.html';
+                }, 2000);
+            }, 1500);
         });
     </script>
 </body>
