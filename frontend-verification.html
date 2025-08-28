@@ -126,19 +126,22 @@
         
         // 提交按钮点击事件
         submitBtn.addEventListener('click', () => {
-            // 在实际应用中，这里会将验证token发送到服务器进行验证
-            showMessage('Processing your request...', 'success');
-            
-            // 模拟处理延迟
+          showMessage('Processing your request...', 'success');
+  
+          setTimeout(() => {
+            showMessage('Operation completed! You have been successfully verified.', 'success');
+    
+            // 关键修复：设置验证状态
+            sessionStorage.setItem(VERIFY_STATUS_KEY, 'true');
+    
+            // 获取跳转参数，优先使用原页面地址
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirectUrl = urlParams.get('redirect') || 'index.html';
+    
             setTimeout(() => {
-                showMessage('Operation completed! You have been successfully verified.', 'success');
-                
-                // 2秒后可以添加跳转逻辑
-                setTimeout(() => {
-                    alert('Verification successful! Redirecting to the next page.');
-                    window.location.href = 'index.html';
-                }, 2000);
-            }, 1500);
+              window.location.href = redirectUrl; // 跳转到原页面或主页
+            }, 2000);
+          }, 1500);
         });
     </script>
 </body>
