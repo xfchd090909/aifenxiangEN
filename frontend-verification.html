@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>人机验证示例</title>
+    <title>Robot Verification</title>
     <!-- 引入Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入Font Awesome -->
@@ -53,8 +53,8 @@
                 <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
                     <i class="fa fa-shield text-2xl"></i>
                 </div>
-                <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-dark mb-2">验证您的身份</h1>
-                <p class="text-gray-500">请完成以下验证以证明您不是自动程序</p>
+                <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-dark mb-2">Verify your identity</h1>
+                <p class="text-gray-500">Please complete the following verification to prove you are not a robot</p>
             </div>
             
             <!-- 验证区域 -->
@@ -78,14 +78,14 @@
             <button id="submit-btn" 
                     class="w-full bg-primary text-white py-3 px-6 rounded-lg font-medium btn-hover opacity-50 cursor-not-allowed"
                     disabled>
-                验证并继续
+                Verify and Continue
             </button>
             
             <!-- 辅助信息 -->
             <p class="text-center text-gray-400 text-sm mt-6">
-                安全验证由 Cloudflare 提供支持
+                Security verification powered by Cloudflare
                 <a href="https://www.cloudflare.com/zh-cn/products/turnstile/" target="_blank" class="text-primary hover:underline">
-                    了解更多<br>
+                    learn more<br>
                 </a>
                 ©2025 | aeafxEN
             </p>
@@ -101,7 +101,7 @@
         // 验证成功回调函数
         function onVerifySuccess(token) {
             // 显示成功消息
-            showMessage('验证成功！您可以继续操作了。', 'success');
+            showMessage('Verification successful! You can continue', 'success');
             
             // 启用提交按钮
             submitBtn.disabled = false;
@@ -109,7 +109,7 @@
             submitBtn.classList.add('opacity-100', 'cursor-pointer');
             
             // 存储验证token（实际应用中可能需要发送到服务器）
-            console.log('验证成功，Token:', token);
+            console.log('Verification successful，Token:', token);
         }
         
         // 显示消息函数
@@ -127,15 +127,15 @@
         // 提交按钮点击事件
         submitBtn.addEventListener('click', () => {
             // 在实际应用中，这里会将验证token发送到服务器进行验证
-            showMessage('正在处理您的请求...', 'success');
+            showMessage('Processing your request...', 'success');
             
             // 模拟处理延迟
             setTimeout(() => {
-                showMessage('操作完成！您已成功通过验证。', 'success');
+                showMessage('Operation completed! You have been successfully verified.', 'success');
                 
                 // 2秒后可以添加跳转逻辑
                 setTimeout(() => {
-                    alert('验证成功！即将跳转到下一页。');
+                    alert('Verification successful! Redirecting to the next page.');
                     window.location.href = 'index.html';
                 }, 2000);
             }, 1500);
