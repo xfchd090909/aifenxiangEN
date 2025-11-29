@@ -7,6 +7,67 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script>
+    // 新增：解析人机验证页面传递的URL参数，同步更新localStorage
+    function receiveVerificationData() {
+        const urlParams = new URLSearchParams(window.location.search);
+        // 提取rv.html传递的验证参数（verified=true 和 token=xxx）
+        const isVerified = urlParams.get('verified') === 'true';
+        const verifyToken = urlParams.get('token');
+
+        // 仅当参数有效时更新存储（防止无效参数干扰）
+        if (isVerified && verifyToken) {
+            // 1. 设置验证状态（1小时有效期，与rv.html逻辑一致）
+            const expireTime = new Date().getTime() + 3600000; // 1小时 = 3600000毫秒
+            localStorage.setItem('human_verified', 'true');
+            localStorage.setItem('verification_expire', expireTime.toString());
+            localStorage.setItem('verify_token', verifyToken); // 可选：存储token供后续使用
+
+            // 2. 清理URL参数（避免刷新页面重复处理，提升用户体验）
+            urlParams.delete('verified');
+            urlParams.delete('token');
+            const cleanUrl = window.location.pathname + (urlParams.toString() ? `?${urlParams.toString()}` : '');
+            window.history.replaceState({}, document.title, cleanUrl);
+        }
+    }
+
+    // 核心：检查人机验证状态（原有逻辑不变）
+    function checkVerification() {
+        const verification = localStorage.getItem('human_verified');
+        const expireTime = localStorage.getItem('verification_expire');
+        const currentTime = new Date().getTime();
+        const currentUrl = window.location.href;
+
+        // 未验证或已过期 → 跳转到验证页面
+        if (!verification || !expireTime || currentTime > parseInt(expireTime)) {
+            localStorage.setItem('redirect_after_verify', currentUrl);
+            window.location.href = 'https://aeafxen.netlify.app/rv.html';
+        }
+    }
+
+    // 定时检查：页面停留时过期自动重新验证（原有逻辑优化，同步清理token）
+    function startVerificationTimer() {
+        setInterval(() => {
+            const expireTime = localStorage.getItem('verification_expire');
+            const currentTime = new Date().getTime();
+            
+            if (expireTime && currentTime > parseInt(expireTime)) {
+                // 清理所有验证相关存储（包括token）
+                localStorage.removeItem('human_verified');
+                localStorage.removeItem('verification_expire');
+                localStorage.removeItem('verify_token');
+                window.location.reload(); // 刷新后自动跳验证
+            }
+        }, 60000); // 每分钟检查一次
+    }
+
+    // 调整执行顺序：先接收验证数据 → 再检查状态 → 最后启动定时
+    document.addEventListener('DOMContentLoaded', () => {
+        receiveVerificationData(); // 第一步：接收rv.html传递的验证数据并更新存储
+        checkVerification();       // 第二步：检查验证状态（此时已同步最新数据）
+        startVerificationTimer();  // 第三步：启动定时过期检查
+    });
+  </script>
+  <script>
     tailwind.config = {
       theme: {
         extend: {
