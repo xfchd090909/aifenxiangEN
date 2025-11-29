@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Verification</title>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+    <h3 id="verifyTitle">Please complete the robot verification.</h3>
+    <div class="cf-turnstile" 
+         data-sitekey="0x4AAAAAABuV_6cPPwlj1VPo"
+         data-callback="onVerifySuccess"
+         data-theme="light">
+    </div>
+    <div id="result" style="margin-top: 20px;"></div>
+
+    <script>
+        // 1. 检测浏览器语言
+        function getBrowserLanguage() {
+            const lang = navigator.language || navigator.userLanguage;
+            const simpleLang = lang.split('-')[0]; 
+            return {
+                fullLang: lang,
+                simpleLang: simpleLang
+            };
+        }
+
+        const browserLang = getBrowserLanguage();
+        console.log("浏览器完整语言：", browserLang.fullLang);
+        console.log("简化语言代码：", browserLang.simpleLang);
+
+        // 2. 多语言适配
+        const verifyTitle = document.getElementById('verifyTitle');
+        const resultEl = document.getElementById('result');
+        switch (browserLang.simpleLang) {
+            case 'zh':
+                verifyTitle.textContent = "请完成人机验证";
+                resultEl.textContent = "请点击按钮完成验证...";
+                break;
+            case 'en':
+                verifyTitle.textContent = "Please complete the robot verification.";
+                resultEl.textContent = "Please click the button to complete the verification....";
+                break;
+            case 'ja':
+                verifyTitle.textContent = "ロボットの検証を完了してください";
+                resultEl.textContent = "ボタンをクリックして検証を完了してください...";
+                break;
+            case 'ko':
+                verifyTitle.textContent = "로봇 검증을 완료하세요";
+                resultEl.textContent = "확인을 완료하려면 버튼을 클릭하십시오...";
+                break;
+            case 'th':
+                verifyTitle.textContent = "กรุณาตรวจสอบหุ่นยนต์ให้สมบูรณ์";
+                resultEl.textContent = "โปรดคลิกปุ่มเพื่อให้การตรวจสอบหุ่นยนต์เสร็จสมบูรณ์...";
+                break;
+            default:
+                verifyTitle.textContent = "Please complete the human verification";
+                resultEl.textContent = "Please click the button below to verify...";
+        }
+
+        // 3. 获取原网页地址（从URL参数中）
+        function getOriginalPageUrl() {
+            const params = new URLSearchParams(window.location.search);
+            // 获取redirect参数作为原网页地址，默认值为首页
+            return params.get('redirect') || '/';
+        }
+
+        // 4. 发送验证数据到原网页并处理跳转
+        async function onVerifySuccess(token) {
+            resultEl.textContent = browserLang.simpleLang === 'zh' ? "正在验证..." : "Verifying...";
+            const originalUrl = getOriginalPageUrl();
+            
+            try {
+                // 步骤1：发送验证数据到后端确认
+                const response = await fetch('/.netlify/functions/verify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        token,
+                        originalUrl,  // 附加原网页地址信息
+                        timestamp: Date.now()
+                    })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    // 步骤2：验证成功，准备通知原网页并跳转
+                    const successMsg = browserLang.simpleLang === 'zh' 
+                        ? "验证通过！即将返回原页面..." 
+                        : "Verification passed! Redirecting to original page...";
+                    resultEl.textContent = successMsg;
+                    resultEl.style.color = "green";
+
+                    // 尝试通过postMessage通知原网页（如果是iframe嵌入场景）
+                    if (window.parent && window.parent !== window) {
+                        window.parent.postMessage({
+                            type: 'verificationSuccess',
+                            token: token,
+                            success: true
+                        }, new URL(originalUrl).origin); // 限制消息发送范围，提高安全性
+                    }
+
+                    // 步骤3：延迟跳转，让用户看到提示
+                    setTimeout(() => {
+                        // 构建带验证状态的跳转URL
+                        const redirectUrl = new URL(originalUrl, window.location.origin);
+                        redirectUrl.searchParams.set('verified', 'true');
+                        redirectUrl.searchParams.set('token', token);
+                        
+                        window.location.href = redirectUrl.toString();
+                    }, 1500); // 1.5秒后跳转
+                } else {
+                    const errorMsg = data.error || data['error-codes']?.join(', ') || 'Unknown error';
+                    resultEl.textContent = (browserLang.simpleLang === 'zh' ? "验证失败：" : "Verification failed: ") + errorMsg;
+                    resultEl.style.color = "red";
+                }
+            } catch (err) {
+                resultEl.textContent = browserLang.simpleLang === 'zh' ? "网络错误，验证失败" : "Network error, verification failed";
+                resultEl.style.color = "red";
+                console.error("Verification error:", err);
+            }
+        }
+    </script>
+</body>
+</html>
