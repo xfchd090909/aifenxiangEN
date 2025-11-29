@@ -38,7 +38,7 @@
         // 未验证或已过期 → 跳转到验证页面
         if (!verification || !expireTime || currentTime > parseInt(expireTime)) {
             localStorage.setItem('redirect_after_verify', currentUrl);
-            window.location.href = 'https://aeafxen.dpdns.org/rv.html';
+            window.location.href = 'https://aeafxen.netlify.app/rv.html';
         }
     }
 
