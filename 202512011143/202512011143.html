@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aifenxiang</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+    // New: Parse URL parameters passed from the human verification page and sync update localStorage
+    function receiveVerificationData() {
+        const urlParams = new URLSearchParams(window.location.search);
+        // Extract verification parameters passed from rv.html (verified=true and token=xxx)
+        const isVerified = urlParams.get('verified') === 'true';
+        const verifyToken = urlParams.get('token');
+        // Update storage only when parameters are valid (prevent interference from invalid parameters)
+        if (isVerified && verifyToken) {
+            // 1. Set verification status (1-hour validity period, consistent with rv.html logic)
+            const expireTime = new Date().getTime() + 3600000; // 1 hour = 3600000 milliseconds
+            localStorage.setItem('human_verified', 'true');
+            localStorage.setItem('verification_expire', expireTime.toString());
+            localStorage.setItem('verify_token', verifyToken); // Optional: Store token for later use
+            // 2. Clear URL parameters (avoid repeated processing on page refresh, improve user experience)
+            urlParams.delete('verified');
+            urlParams.delete('token');
+            const cleanUrl = window.location.pathname + (urlParams.toString() ? `?${urlParams.toString()}` : '');
+            window.history.replaceState({}, document.title, cleanUrl);
+        }
+    }
+    // Core: Check human verification status (original logic unchanged)
+    function checkVerification() {
+        const verification = localStorage.getItem('human_verified');
+        const expireTime = localStorage.getItem('verification_expire');
+        const currentTime = new Date().getTime();
+        const currentUrl = window.location.href;
+        // Redirect to verification page if not verified or expired
+        if (!verification || !expireTime || currentTime > parseInt(expireTime)) {
+            localStorage.setItem('redirect_after_verify', currentUrl);
+            window.location.href = 'https://aeafxen.netlify.app/rv.html';
+        }
+    }
+    // Timed check: Automatically re-verify when expired during page stay (original logic optimized, sync clear token)
+    function startVerificationTimer() {
+        setInterval(() => {
+            const expireTime = localStorage.getItem('verification_expire');
+            const currentTime = new Date().getTime();
+            
+            if (expireTime && currentTime > parseInt(expireTime)) {
+                // Clear all verification-related storage (including token)
+                localStorage.removeItem('human_verified');
+                localStorage.removeItem('verification_expire');
+                localStorage.removeItem('verify_token');
+                window.location.reload(); // Auto redirect to verification after refresh
+            }
+        }, 60000); // Check every minute
+    }
+    // Adjust execution order: First receive verification data → Then check status → Finally start timing
+    document.addEventListener('DOMContentLoaded', () => {
+        receiveVerificationData(); // Step 1: Receive verification data from rv.html and update storage
+        checkVerification();       // Step 2: Check verification status (latest data has been synced at this point)
+        startVerificationTimer();  // Step 3: Start timed expiration check
+    });
+  </script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366F1',
+            secondary: '#EC4899',
+            accent: '#8B5CF6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .bg-gradient-dynamic {
+        background: linear-gradient(45deg, #6366F1, #EC4899, #8B5CF6, #10B981);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+      .nav-blur {
+        backdrop-filter: blur(8px);
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .flip-in {
+        animation: flipIn 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+      }
+      .flip-out {
+        animation: flipOut 0.6s cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
+      }
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes flipIn {
+      0% { transform: perspective(800px) rotateY(90deg); opacity: 0; }
+      40% { transform: perspective(800px) rotateY(-20deg); }
+      100% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+    }
+    @keyframes flipOut {
+      0% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+      40% { transform: perspective(800px) rotateY(20deg); }
+      100% { transform: perspective(800px) rotateY(90deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-dynamic text-gray-100 font-sans">
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-blur bg-white/10">
+  <div class="container mx-auto px-4 py-3 flex items-center">
+    <div class="flex items-center space-x-3 flex-1">
+      <a href="https://aeafxen.netlify.app" class="text-white/70 hover:text-white transition-colors">
+        <i class="fa fa-home fa-lg"></i>
+      </a>
+      
+      <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-white/20 overflow-hidden border border-white/30">
+            <img src="https://raw.githubusercontent.com/xfchd090909/aifenxiang/main/avatar/mmexport1749912260190.jpg" alt="Author's avatar" class="w-full h-full object-cover">
+          </div>
+          <span class="text-lg font-semibold text-shadow">Æ</span>
+        </div>
+      </div>
+    </div>
+  </header>
+<main class="min-h-screen flex flex-col items-center justify-center pt-20 pb-16">
+      <div class="article-content max-w-4xl mx-auto px-6 py-12 md:px-12 md:py-16 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg mt-6" id="sensitiveContent">
+        <div class="prose prose-lg max-w-none" id="articleText">
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">Join Us</h3>
+          <p class="text-gray-800 mb-6">
+            Join our Telegram channel to get the latest updates and provide feedback to the webmaster for website improvements.<br>
+            We plan to launch Discord, Line, and WeChat Official Account next. Stay tuned for our arrival!
+          </p>
+          <h3 class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">How to Join</h3>
+          <a href="https://t.me/+teLfwaM_RLBlMDVl" class="inline-flex items-center px-3 py-1 bg-primary text-white rounded-md hover:bg-accent transition-colors ml-2">
+            <i class="fa fa-paper-plane mr-2"></i> Telegram
+          </a>
+          
+          <div class="mt-12 pt-8 border-t border-gray-200">
+            <div class="flex flex-wrap items-center gap-4">
+              <span class="text-sm font-medium text-gray-500">Published on: December 1, 2025</span>
+              <span class="text-sm font-medium text-gray-500">Published in: Guangdong, China</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center mt-8">
+        <button id="shareBtn" class="bg-primary text-white py-2 px-4 rounded-md hover:bg-accent transition-colors">
+          <i class="fa fa-share-alt"></i> Share
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+  <footer class="py-8 px-4 bg-black/20 text-center">
+    <div class="container mx-auto">
+      <p class="text-lg mb-2">&copy; 2025 aifenxiang Æ by AE Studio</p>
+      <p class="text-sm text-white/60 mb-4">All materials are sourced from the internet. If there is any copyright infringement, please contact us to remove them.</p>
+      <button id="emailBtn" class="text-white/80 hover:text-white transition-colors">
+        <i class="fa fa-envelope-o text-xl"></i>
+      </button>
+      <div class="mt-4">
+        <a href="https://aeafxen.netlify.app/202512011143/202512011143.en" class="text-white/80 hover:text-white transition-colors mx-2">English</a>
+        <span class="text-white/80">|</span>
+        <a href="https://aeafx.netlify.app/202512011143/202512011143" class="text-white/80 hover:text-white transition-colors mx-2">Chinese</a>
+        <span class="text-white/80">|</span>
+        <a href="https://aeafxen.netlify.app/announcement.html" class="text-white/80 hover:text-white transition-colors mx-2">Announcements</a>
+      </div>
+    </div>
+  </footer>
+  <div id="emailModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="modalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="modalContent">
+      <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Contact Email</h3>
+      <div class="space-y-3 text-gray-700">
+        <div class="flex items-center">
+          <i class="fa fa-envelope-o text-primary mr-3"></i>
+          <span>163 Email: teada2024@163.com</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-envelope-o text-accent mr-3"></i>
+          <span>Gmail: xfchd090909@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="shareModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="shareModalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="shareModalContent">
+      <button id="closeShareModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Share To</h3>
+      <div class="space-y-3 text-gray-700">
+        <div class="flex items-center">
+          <i class="fa fa-telegram text-accent mr-3"></i>
+          <a href="https://t.me/share/url?url=https://aeafxen.netlify.app/202512011143/202512011143&text=Join Us" target="_blank" class="hover:text-accent">Telegram</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-commenting text-secondary mr-3"></i>
+          <a href="https://line.me/R/msg/text/?Join Us https://aeafxen.netlify.app/202512011143/202512011143" target="_blank" class="hover:text-secondary">LINE</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-facebook text-primary mr-3"></i>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://aeafxen.netlify.app/202512011143/202512011143" target="_blank" class="hover:text-primary">Facebook</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-whatsapp text-accent mr-3"></i>
+          <a href="whatsapp://send?text=Join Us https://aeafxen.netlify.app/202512011143/202512011143" target="_blank" class="hover:text-accent">Whatsapp</a>
+        </div>
+        <div class="flex items-center">
+          <i class="fa fa-link text-secondary mr-3"></i>
+          <button id="copyLinkBtn" class="hover:text-secondary">Copy Link</button>
+        </div>
+      </div>
+      <p class="text-sm text-gray-500 mt-4">Due to strict review mechanisms for domestic software in China, the website currently does not support sharing via WeChat, QQ, and some other software. You can use the copy link function to share this article.</p>
+    </div>
+  </div>
+  <div id="copySuccessModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/50" id="copySuccessModalOverlay"></div>
+    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="copySuccessModalContent">
+      <button id="closeCopySuccessModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <i class="fa fa-times"></i>
+      </button>
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Copy Successful</h3>
+      <p class="text-gray-700">The link has been copied to the clipboard.</p>
+    </div>
+  </div>
+  <script>
+    
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('bg-white/20', 'shadow-md');
+        header.classList.remove('bg-white/10');
+      } else {
+        header.classList.remove('bg-white/20', 'shadow-md');
+        header.classList.add('bg-white/10');
+      }
+    });
+    const emailBtn = document.getElementById('emailBtn');
+    const emailModal = document.getElementById('emailModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModal = document.getElementById('closeModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+    function openModal() {
+      emailModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modalContent.classList.add('flip-in');
+        modalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModalFunc() {
+      modalContent.classList.add('flip-out');
+      setTimeout(() => {
+        emailModal.classList.add('opacity-0', 'pointer-events-none');
+        modalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+    emailBtn.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalFunc);
+    modalOverlay.addEventListener('click', closeModalFunc);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !emailModal.classList.contains('opacity-0')) {
+        closeModalFunc();
+      }
+    });
+    const shareBtn = document.getElementById('shareBtn');
+    const shareModal = document.getElementById('shareModal');
+    const shareModalContent = document.getElementById('shareModalContent');
+    const closeShareModal = document.getElementById('closeShareModal');
+    const shareModalOverlay = document.getElementById('shareModalOverlay');
+    function openShareModal() {
+      shareModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        shareModalContent.classList.add('flip-in');
+        shareModalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+    function closeShareModalFunc() {
+      shareModalContent.classList.add('flip-out');
+      setTimeout(() => {
+        shareModal.classList.add('opacity-0', 'pointer-events-none');
+        shareModalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+    shareBtn.addEventListener('click', openShareModal);
+    closeShareModal.addEventListener('click', closeShareModalFunc);
+    shareModalOverlay.addEventListener('click', closeShareModalFunc);
+    const copyLinkBtn = document.getElementById('copyLinkBtn');
+    const copySuccessModal = document.getElementById('copySuccessModal');
+    const copySuccessModalContent = document.getElementById('copySuccessModalContent');
+    const closeCopySuccessModal = document.getElementById('closeCopySuccessModal');
+    const copySuccessModalOverlay = document.getElementById('copySuccessModalOverlay');
+    function openCopySuccessModal() {
+      copySuccessModal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        copySuccessModalContent.classList.add('flip-in');
+        copySuccessModalContent.classList.remove('opacity-0');
+      }, 100);
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCopySuccessModalFunc() {
+      copySuccessModalContent.classList.add('flip-out');
+      setTimeout(() => {
+        copySuccessModal.classList.add('opacity-0', 'pointer-events-none');
+        copySuccessModalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+    copyLinkBtn.addEventListener('click', () => {
+      const link = 'https://aeafxen.netlify.app/202512011143/202512011143';
+      navigator.clipboard.writeText(link).then(() => {
+        openCopySuccessModal();
+      }).catch((err) => {
+        console.error('Failed to copy link: ', err);
+      });
+    });
+    closeCopySuccessModal.addEventListener('click', closeCopySuccessModalFunc);
+    copySuccessModalOverlay.addEventListener('click', closeCopySuccessModalFunc);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !shareModal.classList.contains('opacity-0')) {
+        closeShareModalFunc();
+      }
+      if (e.key === 'Escape' && !copySuccessModal.classList.contains('opacity-0')) {
+        closeCopySuccessModalFunc();
+      }
+    });
+  </script>
+</body>
+</html>
