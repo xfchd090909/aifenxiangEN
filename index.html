@@ -63,8 +63,6 @@
         receiveVerificationData(); // 第一步：接收rv.html传递的验证数据并更新存储
         checkVerification();       // 第二步：检查验证状态（此时已同步最新数据）
         startVerificationTimer();  // 第三步：启动定时过期检查
-        // 在验证通过且未跳转的情况下显示停止更新通知弹窗
-        showStopUpdateModal();
     });
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -358,27 +356,8 @@
     </div>
   </div>
 
-  <!-- Stop Update Notification Modal -->
-  <div id="stopUpdateModal" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="absolute inset-0 bg-black/50" id="stopModalOverlay"></div>
-    <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6 transform origin-center opacity-0 perspective-800" id="stopModalContent">
-      <button id="closeStopModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-        <i class="fa fa-times"></i>
-      </button>
-      <h3 class="text-xl font-bold text-gray-800 mb-4">This website has stopped updating</h3>
-      <div class="space-y-3 text-gray-700 mb-6">
-        <p>Due to website technology iteration and high cost of code correction, we decided to stop updating articles and security maintenance for this website on March 23, 2026. This decision will not cancel this website, you can continue browsing. Please go to our new homepage for more information.</p>
-        <p class="text-sm text-gray-500 italic">—— AE Studio Team to all users</p>
-      </div>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <button id="stayBtn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">Stay on this page</button>
-        <button id="moveBtn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-accent transition-colors">Go to the updated website</button>
-      </div>
-    </div>
-  </div>
-
   <script>
-    // Existing email modal logic
+
     window.addEventListener('scroll', function() {
       const header = document.querySelector('header');
       if (window.scrollY > 50) {
@@ -389,6 +368,7 @@
         header.classList.add('bg-white/10');
       }
     });
+
 
     const emailBtn = document.getElementById('emailBtn');
     const emailModal = document.getElementById('emailModal');
@@ -408,4 +388,56 @@
     function closeModalFunc() {
       modalContent.classList.add('flip-out');
       setTimeout(() => {
-        emai
+        emailModal.classList.add('opacity-0', 'pointer-events-none');
+        modalContent.classList.remove('flip-in', 'flip-out');
+      }, 600);
+      document.body.style.overflow = '';
+    }
+
+    emailBtn.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalFunc);
+    modalOverlay.addEventListener('click', closeModalFunc);
+
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !emailModal.classList.contains('opacity-0')) {
+        closeModalFunc();
+      }
+    });
+
+
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const mainContent = document.getElementById('mainContent');
+    const originalContent = mainContent.innerHTML;
+    let articlesData = []; 
+    
+ 
+    document.addEventListener('DOMContentLoaded', function() {
+      const articleItems = document.querySelectorAll('.article-item');
+      articleItems.forEach(item => {
+        articlesData.push(item.outerHTML);
+      });
+    });
+
+
+    let searchTimeout;
+    
+
+    function performSearch() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const keyword = searchInput.value.trim().toLowerCase();
+        
+        if (keyword === '') {
+
+          mainContent.innerHTML = originalContent;
+          return;
+        }
+        
+
+        mainContent.innerHTML = `
+          <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold mb-6 text-center text-shadow tracking-tight">
+            aifenxiang
+          </h1>
+          <p class="text-xl text-white/80 mb-8 text-center max-w-2xl">
